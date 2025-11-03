@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://biddfgyn54fwb"]
+
+[ext_resource type="Texture2D" uid="uid://byngdk31shui3" path="res://[FREE] Industrial Tileset/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1.png" id="1_w0xbj"]
+
+[node name="Floor" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w0xbj")
+region_enabled = true
+region_rect = Rect2(84.3307, 92.02575, 11.278458, 12.506859)

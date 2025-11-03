@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpx8l5bfv1jrk"]
+
+[ext_resource type="Script" uid="uid://d1p7dgy6uim2r" path="res://scenes/module/module.gd" id="1_13as8"]
+[ext_resource type="Texture2D" uid="uid://3qin8577ns1g" path="res://[FREE] Industrial Tileset/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1B.png" id="1_noutr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13as8"]
+size = Vector2(32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm53x"]
+size = Vector2(32, 39)
+
+[node name="Module" type="Node2D"]
+script = ExtResource("1_13as8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_noutr")
+region_enabled = true
+region_rect = Rect2(96.59352, 31.998627, 31.457306, 40.854935)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_13as8")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -48.0
+offset_right = 40.0
+offset_bottom = -25.0
+text = "Module"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_jm53x")
