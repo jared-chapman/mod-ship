@@ -15,17 +15,21 @@ func _process(_delta: float) -> void:
 	pass
 
 func setup() -> void:
-	var input_scenes = $Inputs.get_children()
-	inputs = input_scenes
-	print(inputs)
-	for i in inputs:
-		i.input_value_changed.connect(Callable(self, "_on_input_signal_connection"))
-		
-	var output_scenes = $Outputs.get_children()
-	outputs = output_scenes
-	print(outputs)
-	for i in outputs:
-		i.output_value_changed.connect(Callable(self, "_on_output_signal_connection"))
+	inputs = $Inputs.get_children()
+	outputs = $Outputs.get_children()
+
+	print("Inputs: ", inputs)
+	print("Outputs: ", outputs)
+
+	for input_jack in inputs:
+		var callable_in = Callable(self, "_on_input_signal_connection")
+		if not input_jack.is_connected("input_value_changed", callable_in):
+			input_jack.input_value_changed.connect(callable_in)
+
+	for output_jack in outputs:
+		var callable_out = Callable(self, "_on_output_signal_connection")
+		if not output_jack.is_connected("output_value_changed", callable_out):
+			output_jack.output_value_changed.connect(callable_out)
 
 	
 

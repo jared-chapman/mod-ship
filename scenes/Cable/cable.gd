@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var line: Line2D
+@export var debug := true
 
 var output_jack: Node2D
 var input_jack: Node2D
