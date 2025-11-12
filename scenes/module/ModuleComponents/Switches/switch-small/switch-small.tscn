@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc2gvn6836ljb"]
+
+[ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://sheet-1.png" id="1_q7ut5"]
+[ext_resource type="Script" uid="uid://vgek1o8e0gl0" path="res://scenes/module/ModuleComponents/Switches/switch-small/switch-small.gd" id="1_thjy1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thjy1"]
+size = Vector2(8, 13)
+
+[node name="SwitchSmall" type="Node2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_thjy1")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_q7ut5")
+region_enabled = true
+region_rect = Rect2(12.984057, 33.966137, 5.045493, 3.9006386)
+
+[node name="Off" type="Sprite2D" parent="Body"]
+texture = ExtResource("1_q7ut5")
+region_enabled = true
+region_rect = Rect2(65.05175, 113.0093, 4.9482727, 7.9745255)
+
+[node name="On" type="Sprite2D" parent="Body"]
+visible = false
+texture = ExtResource("1_q7ut5")
+region_enabled = true
+region_rect = Rect2(71.1199, 113.08651, 4.867264, 7.88266)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_thjy1")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

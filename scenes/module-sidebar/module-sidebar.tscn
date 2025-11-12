@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://nkjjomc0h8dx"]
+[gd_scene load_steps=3 format=3 uid="uid://nkjjomc0h8dx"]
+
+[ext_resource type="Script" uid="uid://cryputehbuye6" path="res://scenes/module-sidebar/module_sidebar.gd" id="1_0y2r2"]
+[ext_resource type="PackedScene" uid="uid://ce7aq0vw0ckrm" path="res://scenes/module-sidebar/Modules/Atten-1.tscn" id="2_w7y8k"]
 
 [node name="ModuleSidebar" type="Node2D"]
+script = ExtResource("1_0y2r2")
+module = ExtResource("2_w7y8k")

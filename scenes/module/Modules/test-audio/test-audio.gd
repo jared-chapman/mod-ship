@@ -1,14 +1,15 @@
-extends Node2D
-class_name Module
+extends ModuleParent
 
-@export var module_name: String = "Reactor"
-@export var power_draw: float = 10.0
+var sig_in
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Label.text = module_name
+	setup()
+	sig_in = inputs[0]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+	

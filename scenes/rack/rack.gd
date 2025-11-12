@@ -3,7 +3,7 @@ extends Node2D
 class_name Rack
 
 @export var capacity := 1
-var loaded_modules: Array[Module] = [] # Here Module is the class name assigned in module.gd
+var loaded_modules = []
 
 signal player_entered(rack)
 signal player_exited(rack)
@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 func has_capacity() -> bool:
 	return loaded_modules.size() < capacity
 	
-func load_module(m: Module) -> void:
+func load_module(m) -> void:
 	if not has_capacity(): return
 	add_child(m)
 	m.position = Vector2(0, -24)

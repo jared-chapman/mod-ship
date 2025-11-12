@@ -15,8 +15,8 @@ func _ready():
 
 func _physics_process(_delta):
 	var input = Vector2.ZERO
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	velocity = input.normalized() * speed
 	move_and_slide()
 

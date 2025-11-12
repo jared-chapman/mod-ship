@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ce7aq0vw0ckrm"]
 
-[ext_resource type="Script" uid="uid://cvmeh2atbgetr" path="res://scenes/module-sidebar/knob.gd" id="1_rw6dx"]
-[ext_resource type="PackedScene" uid="uid://b8derjjy0tsxb" path="res://scenes/module-sidebar/knob.tscn" id="2_0eucj"]
+[ext_resource type="Script" uid="uid://cjcpsnnfdh782" path="res://scenes/module-sidebar/Modules/atten_1.gd" id="1_rw6dx"]
+[ext_resource type="PackedScene" uid="uid://b8derjjy0tsxb" path="res://scenes/module/ModuleComponents/Knobs/knob-small/knob-small.tscn" id="2_0eucj"]
 [ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://sheet-1.png" id="3_fnn56"]
 
 [node name="Atten1" type="Node2D"]
@@ -25,3 +25,6 @@ position = Vector2(93, 225)
 [node name="a3" parent="." instance=ExtResource("2_0eucj")]
 z_index = 1
 position = Vector2(94, 315)
+
+[node name="Knob" parent="." instance=ExtResource("2_0eucj")]
+position = Vector2(175, 59)

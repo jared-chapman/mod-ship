@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6n0aos56fpoi"]
+
+[ext_resource type="Script" uid="uid://b26a0xuwsuynn" path="res://scenes/module/Modules/atten-2/atten_2.gd" id="1_u5ktk"]
+[ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://sheet-1.png" id="2_5ob8e"]
+[ext_resource type="PackedScene" uid="uid://b8derjjy0tsxb" path="res://scenes/module/ModuleComponents/Knobs/knob-small/knob-small.tscn" id="3_l4dle"]
+[ext_resource type="PackedScene" uid="uid://c2drth8vrehwo" path="res://scenes/module/ModuleComponents/Jacks/jack-small/jack-small.tscn" id="4_2rase"]
+
+[node name="Atten-2" type="Node2D"]
+script = ExtResource("1_u5ktk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_5ob8e")
+centered = false
+region_enabled = true
+region_rect = Rect2(47.96437, -0.02407217, 32.025314, 64.034325)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(92, 187)
+enabled = false
+zoom = Vector2(1.48, 1.48)
+
+[node name="Inputs" type="Node2D" parent="."]
+
+[node name="Knob" parent="Inputs" instance=ExtResource("3_l4dle")]
+position = Vector2(92, 134)
+_name = "attenuator-1"
+
+[node name="Knob2" parent="Inputs" instance=ExtResource("3_l4dle")]
+position = Vector2(92, 224)
+_name = "attenuator-2"
+
+[node name="Knob3" parent="Inputs" instance=ExtResource("3_l4dle")]
+position = Vector2(92, 314)
+_name = "attenuator-3"
+
+[node name="JackSmall" parent="Inputs" instance=ExtResource("4_2rase")]
+position = Vector2(48, 96)
+is_input = true
+
+[node name="JackSmall2" parent="Inputs" instance=ExtResource("4_2rase")]
+position = Vector2(48, 186)
+is_input = true
+
+[node name="JackSmall3" parent="Inputs" instance=ExtResource("4_2rase")]
+position = Vector2(48, 277)
+is_input = true
+
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="JackSmall" parent="Outputs" instance=ExtResource("4_2rase")]
+position = Vector2(140, 96)
+
+[node name="JackSmall2" parent="Outputs" instance=ExtResource("4_2rase")]
+position = Vector2(139, 186)
+
+[node name="JackSmall3" parent="Outputs" instance=ExtResource("4_2rase")]
+position = Vector2(139, 276)

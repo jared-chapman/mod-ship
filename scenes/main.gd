@@ -35,21 +35,13 @@ func _process(_delta: float) -> void:
 		ui.show_rack(current_rack)
 
 func _on_request_place_module(pos: Vector2, room):
-	var rack = _get_closest_rack(pos, room)
-	if rack:
-		var in_range = rack.global_position.distance_to(pos) <= MAX_RACK_DISTANCE
-		var has_capacity = rack.has_capacity()
-		if in_range and has_capacity:
-			print('loading module')
-			var module: Module = module_scene.instantiate()
-			rack.load_module(module)
-		else:
-			if not in_range:
-				print('rack out of range')
-			if not has_capacity:
-				print('rack is full')
-	else:
-		print('no rack')
+	# the player wants to place a module. Run some logic to make sure main is
+	# ok with it, then send signal to the sidebar that it should place a module
+	# the sidebar will decide if it has a valid rack to place the module into
+	var module_placement_allowed := true
+	pass
+	#if (module_placement_allowed):
+		
 		
 func _on_request_clear_rack(pos: Vector2, room):
 	var rack = _get_closest_rack(pos, room)

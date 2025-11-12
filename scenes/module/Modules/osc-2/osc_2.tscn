@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckdbf3wb0mrnd"]
+
+[ext_resource type="Script" uid="uid://cgnxglg4hcpyt" path="res://scenes/module/Modules/osc-2/osc_2.gd" id="1_aqae1"]
+[ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://sheet-1.png" id="2_tiy5i"]
+[ext_resource type="PackedScene" uid="uid://b8derjjy0tsxb" path="res://scenes/module/ModuleComponents/Knobs/knob-small/knob-small.tscn" id="4_aqae1"]
+[ext_resource type="PackedScene" uid="uid://bc2gvn6836ljb" path="res://scenes/module/ModuleComponents/Switches/switch-small/switch-small.tscn" id="5_wmtl2"]
+[ext_resource type="PackedScene" uid="uid://c2drth8vrehwo" path="res://scenes/module/ModuleComponents/Jacks/jack-small/jack-small.tscn" id="6_oqc5y"]
+
+[node name="Atten-2" type="Node2D"]
+script = ExtResource("1_aqae1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_tiy5i")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.06378651, 0.036209106, 32.103443, 63.91796)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(92, 187)
+enabled = false
+zoom = Vector2(1.48, 1.48)
+
+[node name="Inputs" type="Node2D" parent="."]
+
+[node name="Knob" parent="Inputs" instance=ExtResource("4_aqae1")]
+position = Vector2(91, 115)
+
+[node name="SwitchSmall" parent="Inputs" instance=ExtResource("5_wmtl2")]
+position = Vector2(93, 215.00002)
+
+[node name="Outputs" type="Node2D" parent="."]
+
+[node name="JackSmall" parent="Outputs" instance=ExtResource("6_oqc5y")]
+position = Vector2(47, 306)
+
+[node name="JackSmall2" parent="Outputs" instance=ExtResource("6_oqc5y")]
+position = Vector2(138, 307)

@@ -18,4 +18,3 @@ module_scene = ExtResource("3_jyhfs")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SidePanel" parent="CanvasLayer" instance=ExtResource("5_tbgi4")]
-mouse_filter = 2
