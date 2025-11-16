@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpx8l5bfv1jrk"]
 
 [ext_resource type="Script" uid="uid://d1p7dgy6uim2r" path="res://scenes/module/module-parent.gd" id="1_13as8"]
-[ext_resource type="Texture2D" uid="uid://3qin8577ns1g" path="res://[FREE] Industrial Tileset/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1B.png" id="1_noutr"]
+[ext_resource type="Texture2D" uid="uid://3qin8577ns1g" path="res://assets/[FREE] Industrial Tileset/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1B.png" id="1_noutr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13as8"]
 size = Vector2(32, 40)

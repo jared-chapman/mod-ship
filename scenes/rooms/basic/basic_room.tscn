@@ -1,0 +1,2167 @@
+[gd_scene load_steps=2 format=3 uid="uid://bur8obagsaj14"]
+
+[ext_resource type="PackedScene" uid="uid://biddfgyn54fwb" path="res://scenes/floor/floor.tscn" id="1_o4s7t"]
+
+[node name="BasicLargeRectFloor" type="Node2D"]
+
+[node name="floorTiles" type="Node2D" parent="."]
+
+[node name="Floor11" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 42)
+
+[node name="Floor12" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 54)
+
+[node name="Floor13" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 113)
+
+[node name="Floor14" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 6)
+
+[node name="Floor15" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 18)
+
+[node name="Floor16" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 30)
+
+[node name="Floor17" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 101)
+
+[node name="Floor18" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 90)
+
+[node name="Floor19" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 78)
+
+[node name="Floor20" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 66)
+
+[node name="Floor21" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 42)
+
+[node name="Floor22" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 54)
+
+[node name="Floor23" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 113)
+
+[node name="Floor24" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 6)
+
+[node name="Floor25" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 18)
+
+[node name="Floor26" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 30)
+
+[node name="Floor27" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 101)
+
+[node name="Floor28" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 90)
+
+[node name="Floor29" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 78)
+
+[node name="Floor30" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 66)
+
+[node name="Floor31" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 42)
+
+[node name="Floor32" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 54)
+
+[node name="Floor33" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 113)
+
+[node name="Floor34" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 6)
+
+[node name="Floor35" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 18)
+
+[node name="Floor36" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 30)
+
+[node name="Floor37" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 101)
+
+[node name="Floor38" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 90)
+
+[node name="Floor39" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 78)
+
+[node name="Floor40" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 66)
+
+[node name="Floor41" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 42)
+
+[node name="Floor42" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 54)
+
+[node name="Floor43" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 113)
+
+[node name="Floor44" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 6)
+
+[node name="Floor45" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 18)
+
+[node name="Floor46" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 30)
+
+[node name="Floor47" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 101)
+
+[node name="Floor48" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 90)
+
+[node name="Floor49" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 78)
+
+[node name="Floor50" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 66)
+
+[node name="Floor51" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 42)
+
+[node name="Floor52" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 54)
+
+[node name="Floor53" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 113)
+
+[node name="Floor54" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 6)
+
+[node name="Floor55" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 18)
+
+[node name="Floor56" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 30)
+
+[node name="Floor57" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 101)
+
+[node name="Floor58" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 90)
+
+[node name="Floor59" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 78)
+
+[node name="Floor60" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 66)
+
+[node name="Floor61" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 42)
+
+[node name="Floor62" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 54)
+
+[node name="Floor63" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 113)
+
+[node name="Floor64" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 6)
+
+[node name="Floor65" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 18)
+
+[node name="Floor66" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 30)
+
+[node name="Floor67" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 101)
+
+[node name="Floor68" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 90)
+
+[node name="Floor69" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 78)
+
+[node name="Floor70" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 66)
+
+[node name="Floor71" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 42)
+
+[node name="Floor72" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 54)
+
+[node name="Floor73" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 113)
+
+[node name="Floor74" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 6)
+
+[node name="Floor75" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 18)
+
+[node name="Floor76" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 30)
+
+[node name="Floor77" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 101)
+
+[node name="Floor78" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 90)
+
+[node name="Floor79" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 78)
+
+[node name="Floor80" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 66)
+
+[node name="Floor81" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 42)
+
+[node name="Floor82" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 54)
+
+[node name="Floor83" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 113)
+
+[node name="Floor84" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 6)
+
+[node name="Floor85" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 18)
+
+[node name="Floor86" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 30)
+
+[node name="Floor87" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 101)
+
+[node name="Floor88" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 90)
+
+[node name="Floor89" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 78)
+
+[node name="Floor90" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 66)
+
+[node name="Floor91" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 42)
+
+[node name="Floor92" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 54)
+
+[node name="Floor93" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 113)
+
+[node name="Floor94" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 6)
+
+[node name="Floor95" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 18)
+
+[node name="Floor96" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 30)
+
+[node name="Floor97" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 101)
+
+[node name="Floor98" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 90)
+
+[node name="Floor99" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 78)
+
+[node name="Floor100" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 66)
+
+[node name="Floor101" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 42)
+
+[node name="Floor102" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 54)
+
+[node name="Floor103" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 113)
+
+[node name="Floor104" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 6)
+
+[node name="Floor105" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 18)
+
+[node name="Floor106" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 30)
+
+[node name="Floor107" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 101)
+
+[node name="Floor108" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 90)
+
+[node name="Floor109" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 78)
+
+[node name="Floor110" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 66)
+
+[node name="Floor111" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 42)
+
+[node name="Floor112" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 54)
+
+[node name="Floor113" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 113)
+
+[node name="Floor114" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 6)
+
+[node name="Floor115" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 18)
+
+[node name="Floor116" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 30)
+
+[node name="Floor117" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 101)
+
+[node name="Floor118" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 90)
+
+[node name="Floor119" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 78)
+
+[node name="Floor120" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 66)
+
+[node name="Floor121" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 42)
+
+[node name="Floor122" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 54)
+
+[node name="Floor123" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 113)
+
+[node name="Floor124" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 6)
+
+[node name="Floor125" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 18)
+
+[node name="Floor126" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 30)
+
+[node name="Floor127" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 101)
+
+[node name="Floor128" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 90)
+
+[node name="Floor129" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 78)
+
+[node name="Floor130" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 66)
+
+[node name="Floor131" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 42)
+
+[node name="Floor132" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 54)
+
+[node name="Floor133" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 113)
+
+[node name="Floor134" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 6)
+
+[node name="Floor135" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 18)
+
+[node name="Floor136" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 30)
+
+[node name="Floor137" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 101)
+
+[node name="Floor138" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 90)
+
+[node name="Floor139" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 78)
+
+[node name="Floor140" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 66)
+
+[node name="Floor141" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 42)
+
+[node name="Floor142" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 54)
+
+[node name="Floor143" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 113)
+
+[node name="Floor144" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 6)
+
+[node name="Floor145" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 18)
+
+[node name="Floor146" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 30)
+
+[node name="Floor147" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 101)
+
+[node name="Floor148" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 90)
+
+[node name="Floor149" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 78)
+
+[node name="Floor150" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 66)
+
+[node name="Floor151" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 42)
+
+[node name="Floor152" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 54)
+
+[node name="Floor153" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 113)
+
+[node name="Floor154" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 6)
+
+[node name="Floor155" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 18)
+
+[node name="Floor156" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 30)
+
+[node name="Floor157" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 101)
+
+[node name="Floor158" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 90)
+
+[node name="Floor159" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 78)
+
+[node name="Floor160" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 66)
+
+[node name="Floor161" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 42)
+
+[node name="Floor162" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 54)
+
+[node name="Floor163" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 113)
+
+[node name="Floor164" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 6)
+
+[node name="Floor165" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 18)
+
+[node name="Floor166" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 30)
+
+[node name="Floor167" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 101)
+
+[node name="Floor168" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 90)
+
+[node name="Floor169" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 78)
+
+[node name="Floor170" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 66)
+
+[node name="Floor171" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 42)
+
+[node name="Floor172" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 54)
+
+[node name="Floor173" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 113)
+
+[node name="Floor174" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 6)
+
+[node name="Floor175" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 18)
+
+[node name="Floor176" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 30)
+
+[node name="Floor177" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 101)
+
+[node name="Floor178" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 90)
+
+[node name="Floor179" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 78)
+
+[node name="Floor180" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 66)
+
+[node name="Floor181" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 42)
+
+[node name="Floor182" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 54)
+
+[node name="Floor183" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 113)
+
+[node name="Floor184" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 6)
+
+[node name="Floor185" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 18)
+
+[node name="Floor186" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 30)
+
+[node name="Floor187" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 101)
+
+[node name="Floor188" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 90)
+
+[node name="Floor189" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 78)
+
+[node name="Floor190" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 66)
+
+[node name="Floor191" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 42)
+
+[node name="Floor192" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 54)
+
+[node name="Floor193" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 113)
+
+[node name="Floor194" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 6)
+
+[node name="Floor195" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 18)
+
+[node name="Floor196" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 30)
+
+[node name="Floor197" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 101)
+
+[node name="Floor198" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 90)
+
+[node name="Floor199" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 78)
+
+[node name="Floor200" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 66)
+
+[node name="Floor201" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 42)
+
+[node name="Floor202" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 54)
+
+[node name="Floor203" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 113)
+
+[node name="Floor204" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 6)
+
+[node name="Floor205" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 18)
+
+[node name="Floor206" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 30)
+
+[node name="Floor207" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 101)
+
+[node name="Floor208" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 90)
+
+[node name="Floor209" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 78)
+
+[node name="Floor210" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 66)
+
+[node name="Floor211" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 42)
+
+[node name="Floor212" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 54)
+
+[node name="Floor213" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 113)
+
+[node name="Floor214" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 6)
+
+[node name="Floor215" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 18)
+
+[node name="Floor216" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 30)
+
+[node name="Floor217" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 101)
+
+[node name="Floor218" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 90)
+
+[node name="Floor219" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 78)
+
+[node name="Floor220" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 66)
+
+[node name="Floor221" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 42)
+
+[node name="Floor222" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 54)
+
+[node name="Floor223" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 113)
+
+[node name="Floor224" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 6)
+
+[node name="Floor225" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 18)
+
+[node name="Floor226" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 30)
+
+[node name="Floor227" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 101)
+
+[node name="Floor228" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 90)
+
+[node name="Floor229" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 78)
+
+[node name="Floor230" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 66)
+
+[node name="Floor231" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 42)
+
+[node name="Floor232" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 54)
+
+[node name="Floor233" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 113)
+
+[node name="Floor234" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 6)
+
+[node name="Floor235" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 18)
+
+[node name="Floor236" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 30)
+
+[node name="Floor237" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 101)
+
+[node name="Floor238" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 90)
+
+[node name="Floor239" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 78)
+
+[node name="Floor240" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 66)
+
+[node name="Floor241" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 42)
+
+[node name="Floor242" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 54)
+
+[node name="Floor243" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 113)
+
+[node name="Floor244" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 6)
+
+[node name="Floor245" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 18)
+
+[node name="Floor246" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 30)
+
+[node name="Floor247" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 101)
+
+[node name="Floor248" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 90)
+
+[node name="Floor249" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 78)
+
+[node name="Floor250" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 66)
+
+[node name="Floor251" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 42)
+
+[node name="Floor252" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 54)
+
+[node name="Floor253" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 113)
+
+[node name="Floor254" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 6)
+
+[node name="Floor255" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 18)
+
+[node name="Floor256" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 30)
+
+[node name="Floor257" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 101)
+
+[node name="Floor258" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 90)
+
+[node name="Floor259" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 78)
+
+[node name="Floor260" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 66)
+
+[node name="Floor261" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 42)
+
+[node name="Floor262" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 54)
+
+[node name="Floor263" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 113)
+
+[node name="Floor264" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 6)
+
+[node name="Floor265" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 18)
+
+[node name="Floor266" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 30)
+
+[node name="Floor267" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 101)
+
+[node name="Floor268" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 90)
+
+[node name="Floor269" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 78)
+
+[node name="Floor270" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 66)
+
+[node name="Floor271" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 42)
+
+[node name="Floor272" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 54)
+
+[node name="Floor273" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 113)
+
+[node name="Floor274" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 6)
+
+[node name="Floor275" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 18)
+
+[node name="Floor276" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 30)
+
+[node name="Floor277" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 101)
+
+[node name="Floor278" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 90)
+
+[node name="Floor279" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 78)
+
+[node name="Floor280" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 66)
+
+[node name="Floor281" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 42)
+
+[node name="Floor282" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 54)
+
+[node name="Floor283" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 113)
+
+[node name="Floor284" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 6)
+
+[node name="Floor285" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 18)
+
+[node name="Floor286" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 30)
+
+[node name="Floor287" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 101)
+
+[node name="Floor288" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 90)
+
+[node name="Floor289" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 78)
+
+[node name="Floor290" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 66)
+
+[node name="Floor291" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 42)
+
+[node name="Floor292" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 54)
+
+[node name="Floor293" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 113)
+
+[node name="Floor294" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 6)
+
+[node name="Floor295" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 18)
+
+[node name="Floor296" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 30)
+
+[node name="Floor297" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 101)
+
+[node name="Floor298" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 90)
+
+[node name="Floor299" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 78)
+
+[node name="Floor300" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 66)
+
+[node name="Floor301" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 42)
+
+[node name="Floor302" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 54)
+
+[node name="Floor303" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 113)
+
+[node name="Floor304" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 6)
+
+[node name="Floor305" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 18)
+
+[node name="Floor306" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 30)
+
+[node name="Floor307" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 101)
+
+[node name="Floor308" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 90)
+
+[node name="Floor309" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 78)
+
+[node name="Floor310" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 66)
+
+[node name="Floor311" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 42)
+
+[node name="Floor312" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 54)
+
+[node name="Floor313" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 113)
+
+[node name="Floor314" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 6)
+
+[node name="Floor315" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 18)
+
+[node name="Floor316" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 30)
+
+[node name="Floor317" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 101)
+
+[node name="Floor318" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 90)
+
+[node name="Floor319" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 78)
+
+[node name="Floor320" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 66)
+
+[node name="Floor321" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 42)
+
+[node name="Floor322" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 54)
+
+[node name="Floor323" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 113)
+
+[node name="Floor324" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 6)
+
+[node name="Floor325" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 18)
+
+[node name="Floor326" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 30)
+
+[node name="Floor327" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 101)
+
+[node name="Floor328" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 90)
+
+[node name="Floor329" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 78)
+
+[node name="Floor330" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 66)
+
+[node name="Floor331" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 42)
+
+[node name="Floor332" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 54)
+
+[node name="Floor333" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 113)
+
+[node name="Floor334" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 6)
+
+[node name="Floor335" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 18)
+
+[node name="Floor336" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 30)
+
+[node name="Floor337" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 101)
+
+[node name="Floor338" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 90)
+
+[node name="Floor339" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 78)
+
+[node name="Floor340" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 66)
+
+[node name="Floor341" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 42)
+
+[node name="Floor342" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 54)
+
+[node name="Floor343" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 113)
+
+[node name="Floor344" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 6)
+
+[node name="Floor345" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 18)
+
+[node name="Floor346" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 30)
+
+[node name="Floor347" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 101)
+
+[node name="Floor348" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 90)
+
+[node name="Floor349" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 78)
+
+[node name="Floor350" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 66)
+
+[node name="Floor351" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 42)
+
+[node name="Floor352" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 54)
+
+[node name="Floor353" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 113)
+
+[node name="Floor354" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 6)
+
+[node name="Floor355" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 18)
+
+[node name="Floor356" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 30)
+
+[node name="Floor357" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 101)
+
+[node name="Floor358" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 90)
+
+[node name="Floor359" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 78)
+
+[node name="Floor360" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 66)
+
+[node name="Floor361" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 42)
+
+[node name="Floor362" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 54)
+
+[node name="Floor363" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 113)
+
+[node name="Floor364" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 6)
+
+[node name="Floor365" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 18)
+
+[node name="Floor366" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 30)
+
+[node name="Floor367" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 101)
+
+[node name="Floor368" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 90)
+
+[node name="Floor369" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 78)
+
+[node name="Floor370" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 66)
+
+[node name="Floor371" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 161)
+
+[node name="Floor372" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 173)
+
+[node name="Floor373" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 232)
+
+[node name="Floor374" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 125)
+
+[node name="Floor375" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 137)
+
+[node name="Floor376" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 149)
+
+[node name="Floor377" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 220)
+
+[node name="Floor378" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 209)
+
+[node name="Floor379" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 197)
+
+[node name="Floor380" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(6, 185)
+
+[node name="Floor381" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 161)
+
+[node name="Floor382" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 173)
+
+[node name="Floor383" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 232)
+
+[node name="Floor384" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 125)
+
+[node name="Floor385" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 137)
+
+[node name="Floor386" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 149)
+
+[node name="Floor387" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 220)
+
+[node name="Floor388" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 209)
+
+[node name="Floor389" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 197)
+
+[node name="Floor390" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(17, 185)
+
+[node name="Floor391" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 161)
+
+[node name="Floor392" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 173)
+
+[node name="Floor393" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 232)
+
+[node name="Floor394" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 125)
+
+[node name="Floor395" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 137)
+
+[node name="Floor396" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 149)
+
+[node name="Floor397" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 220)
+
+[node name="Floor398" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 209)
+
+[node name="Floor399" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 197)
+
+[node name="Floor400" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(28, 185)
+
+[node name="Floor401" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 161)
+
+[node name="Floor402" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 173)
+
+[node name="Floor403" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 232)
+
+[node name="Floor404" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 125)
+
+[node name="Floor405" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 137)
+
+[node name="Floor406" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 149)
+
+[node name="Floor407" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 220)
+
+[node name="Floor408" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 209)
+
+[node name="Floor409" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 197)
+
+[node name="Floor410" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(39, 185)
+
+[node name="Floor411" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 161)
+
+[node name="Floor412" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 173)
+
+[node name="Floor413" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 232)
+
+[node name="Floor414" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 125)
+
+[node name="Floor415" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 137)
+
+[node name="Floor416" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 149)
+
+[node name="Floor417" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 220)
+
+[node name="Floor418" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 209)
+
+[node name="Floor419" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 197)
+
+[node name="Floor420" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(50, 185)
+
+[node name="Floor421" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 161)
+
+[node name="Floor422" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 173)
+
+[node name="Floor423" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 232)
+
+[node name="Floor424" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 125)
+
+[node name="Floor425" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 137)
+
+[node name="Floor426" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 149)
+
+[node name="Floor427" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 220)
+
+[node name="Floor428" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 209)
+
+[node name="Floor429" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 197)
+
+[node name="Floor430" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(61, 185)
+
+[node name="Floor431" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 161)
+
+[node name="Floor432" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 173)
+
+[node name="Floor433" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 232)
+
+[node name="Floor434" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 125)
+
+[node name="Floor435" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 137)
+
+[node name="Floor436" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 149)
+
+[node name="Floor437" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 220)
+
+[node name="Floor438" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 209)
+
+[node name="Floor439" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 197)
+
+[node name="Floor440" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(72, 185)
+
+[node name="Floor441" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 161)
+
+[node name="Floor442" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 173)
+
+[node name="Floor443" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 232)
+
+[node name="Floor444" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 125)
+
+[node name="Floor445" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 137)
+
+[node name="Floor446" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 149)
+
+[node name="Floor447" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 220)
+
+[node name="Floor448" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 209)
+
+[node name="Floor449" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 197)
+
+[node name="Floor450" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(83, 185)
+
+[node name="Floor451" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 161)
+
+[node name="Floor452" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 173)
+
+[node name="Floor453" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 232)
+
+[node name="Floor454" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 125)
+
+[node name="Floor455" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 137)
+
+[node name="Floor456" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 149)
+
+[node name="Floor457" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 220)
+
+[node name="Floor458" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 209)
+
+[node name="Floor459" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 197)
+
+[node name="Floor460" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(94, 185)
+
+[node name="Floor461" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 161)
+
+[node name="Floor462" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 173)
+
+[node name="Floor463" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 232)
+
+[node name="Floor464" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 125)
+
+[node name="Floor465" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 137)
+
+[node name="Floor466" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 149)
+
+[node name="Floor467" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 220)
+
+[node name="Floor468" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 209)
+
+[node name="Floor469" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 197)
+
+[node name="Floor470" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(105, 185)
+
+[node name="Floor471" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 161)
+
+[node name="Floor472" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 173)
+
+[node name="Floor473" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 232)
+
+[node name="Floor474" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 125)
+
+[node name="Floor475" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 137)
+
+[node name="Floor476" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 149)
+
+[node name="Floor477" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 220)
+
+[node name="Floor478" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 209)
+
+[node name="Floor479" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 197)
+
+[node name="Floor480" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(116, 185)
+
+[node name="Floor481" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 161)
+
+[node name="Floor482" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 173)
+
+[node name="Floor483" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 232)
+
+[node name="Floor484" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 125)
+
+[node name="Floor485" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 137)
+
+[node name="Floor486" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 149)
+
+[node name="Floor487" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 220)
+
+[node name="Floor488" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 209)
+
+[node name="Floor489" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 197)
+
+[node name="Floor490" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(127, 185)
+
+[node name="Floor491" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 161)
+
+[node name="Floor492" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 173)
+
+[node name="Floor493" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 232)
+
+[node name="Floor494" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 125)
+
+[node name="Floor495" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 137)
+
+[node name="Floor496" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 149)
+
+[node name="Floor497" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 220)
+
+[node name="Floor498" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 209)
+
+[node name="Floor499" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 197)
+
+[node name="Floor500" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(138, 185)
+
+[node name="Floor501" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 161)
+
+[node name="Floor502" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 173)
+
+[node name="Floor503" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 232)
+
+[node name="Floor504" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 125)
+
+[node name="Floor505" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 137)
+
+[node name="Floor506" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 149)
+
+[node name="Floor507" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 220)
+
+[node name="Floor508" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 209)
+
+[node name="Floor509" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 197)
+
+[node name="Floor510" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(149, 185)
+
+[node name="Floor511" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 161)
+
+[node name="Floor512" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 173)
+
+[node name="Floor513" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 232)
+
+[node name="Floor514" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 125)
+
+[node name="Floor515" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 137)
+
+[node name="Floor516" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 149)
+
+[node name="Floor517" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 220)
+
+[node name="Floor518" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 209)
+
+[node name="Floor519" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 197)
+
+[node name="Floor520" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(160, 185)
+
+[node name="Floor521" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 161)
+
+[node name="Floor522" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 173)
+
+[node name="Floor523" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 232)
+
+[node name="Floor524" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 125)
+
+[node name="Floor525" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 137)
+
+[node name="Floor526" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 149)
+
+[node name="Floor527" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 220)
+
+[node name="Floor528" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 209)
+
+[node name="Floor529" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 197)
+
+[node name="Floor530" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(171, 185)
+
+[node name="Floor531" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 161)
+
+[node name="Floor532" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 173)
+
+[node name="Floor533" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 232)
+
+[node name="Floor534" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 125)
+
+[node name="Floor535" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 137)
+
+[node name="Floor536" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 149)
+
+[node name="Floor537" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 220)
+
+[node name="Floor538" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 209)
+
+[node name="Floor539" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 197)
+
+[node name="Floor540" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(182, 185)
+
+[node name="Floor541" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 161)
+
+[node name="Floor542" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 173)
+
+[node name="Floor543" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 232)
+
+[node name="Floor544" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 125)
+
+[node name="Floor545" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 137)
+
+[node name="Floor546" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 149)
+
+[node name="Floor547" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 220)
+
+[node name="Floor548" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 209)
+
+[node name="Floor549" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 197)
+
+[node name="Floor550" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(193, 185)
+
+[node name="Floor551" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 161)
+
+[node name="Floor552" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 173)
+
+[node name="Floor553" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 232)
+
+[node name="Floor554" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 125)
+
+[node name="Floor555" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 137)
+
+[node name="Floor556" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 149)
+
+[node name="Floor557" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 220)
+
+[node name="Floor558" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 209)
+
+[node name="Floor559" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 197)
+
+[node name="Floor560" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(204, 185)
+
+[node name="Floor561" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 161)
+
+[node name="Floor562" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 173)
+
+[node name="Floor563" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 232)
+
+[node name="Floor564" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 125)
+
+[node name="Floor565" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 137)
+
+[node name="Floor566" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 149)
+
+[node name="Floor567" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 220)
+
+[node name="Floor568" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 209)
+
+[node name="Floor569" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 197)
+
+[node name="Floor570" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(215, 185)
+
+[node name="Floor571" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 161)
+
+[node name="Floor572" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 173)
+
+[node name="Floor573" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 232)
+
+[node name="Floor574" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 125)
+
+[node name="Floor575" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 137)
+
+[node name="Floor576" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 149)
+
+[node name="Floor577" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 220)
+
+[node name="Floor578" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 209)
+
+[node name="Floor579" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 197)
+
+[node name="Floor580" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(226, 185)
+
+[node name="Floor581" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 161)
+
+[node name="Floor582" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 173)
+
+[node name="Floor583" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 232)
+
+[node name="Floor584" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 125)
+
+[node name="Floor585" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 137)
+
+[node name="Floor586" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 149)
+
+[node name="Floor587" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 220)
+
+[node name="Floor588" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 209)
+
+[node name="Floor589" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 197)
+
+[node name="Floor590" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(237, 185)
+
+[node name="Floor591" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 161)
+
+[node name="Floor592" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 173)
+
+[node name="Floor593" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 232)
+
+[node name="Floor594" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 125)
+
+[node name="Floor595" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 137)
+
+[node name="Floor596" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 149)
+
+[node name="Floor597" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 220)
+
+[node name="Floor598" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 209)
+
+[node name="Floor599" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 197)
+
+[node name="Floor600" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(248, 185)
+
+[node name="Floor601" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 161)
+
+[node name="Floor602" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 173)
+
+[node name="Floor603" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 232)
+
+[node name="Floor604" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 125)
+
+[node name="Floor605" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 137)
+
+[node name="Floor606" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 149)
+
+[node name="Floor607" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 220)
+
+[node name="Floor608" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 209)
+
+[node name="Floor609" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 197)
+
+[node name="Floor610" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(259, 185)
+
+[node name="Floor611" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 161)
+
+[node name="Floor612" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 173)
+
+[node name="Floor613" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 232)
+
+[node name="Floor614" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 125)
+
+[node name="Floor615" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 137)
+
+[node name="Floor616" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 149)
+
+[node name="Floor617" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 220)
+
+[node name="Floor618" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 209)
+
+[node name="Floor619" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 197)
+
+[node name="Floor620" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(270, 185)
+
+[node name="Floor621" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 161)
+
+[node name="Floor622" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 173)
+
+[node name="Floor623" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 232)
+
+[node name="Floor624" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 125)
+
+[node name="Floor625" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 137)
+
+[node name="Floor626" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 149)
+
+[node name="Floor627" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 220)
+
+[node name="Floor628" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 209)
+
+[node name="Floor629" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 197)
+
+[node name="Floor630" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(281, 185)
+
+[node name="Floor631" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 161)
+
+[node name="Floor632" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 173)
+
+[node name="Floor633" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 232)
+
+[node name="Floor634" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 125)
+
+[node name="Floor635" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 137)
+
+[node name="Floor636" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 149)
+
+[node name="Floor637" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 220)
+
+[node name="Floor638" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 209)
+
+[node name="Floor639" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 197)
+
+[node name="Floor640" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(292, 185)
+
+[node name="Floor641" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 161)
+
+[node name="Floor642" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 173)
+
+[node name="Floor643" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 232)
+
+[node name="Floor644" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 125)
+
+[node name="Floor645" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 137)
+
+[node name="Floor646" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 149)
+
+[node name="Floor647" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 220)
+
+[node name="Floor648" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 209)
+
+[node name="Floor649" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 197)
+
+[node name="Floor650" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(303, 185)
+
+[node name="Floor651" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 161)
+
+[node name="Floor652" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 173)
+
+[node name="Floor653" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 232)
+
+[node name="Floor654" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 125)
+
+[node name="Floor655" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 137)
+
+[node name="Floor656" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 149)
+
+[node name="Floor657" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 220)
+
+[node name="Floor658" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 209)
+
+[node name="Floor659" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 197)
+
+[node name="Floor660" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(314, 185)
+
+[node name="Floor661" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 161)
+
+[node name="Floor662" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 173)
+
+[node name="Floor663" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 232)
+
+[node name="Floor664" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 125)
+
+[node name="Floor665" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 137)
+
+[node name="Floor666" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 149)
+
+[node name="Floor667" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 220)
+
+[node name="Floor668" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 209)
+
+[node name="Floor669" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 197)
+
+[node name="Floor670" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(325, 185)
+
+[node name="Floor671" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 161)
+
+[node name="Floor672" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 173)
+
+[node name="Floor673" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 232)
+
+[node name="Floor674" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 125)
+
+[node name="Floor675" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 137)
+
+[node name="Floor676" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 149)
+
+[node name="Floor677" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 220)
+
+[node name="Floor678" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 209)
+
+[node name="Floor679" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 197)
+
+[node name="Floor680" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(336, 185)
+
+[node name="Floor681" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 161)
+
+[node name="Floor682" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 173)
+
+[node name="Floor683" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 232)
+
+[node name="Floor684" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 125)
+
+[node name="Floor685" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 137)
+
+[node name="Floor686" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 149)
+
+[node name="Floor687" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 220)
+
+[node name="Floor688" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 209)
+
+[node name="Floor689" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 197)
+
+[node name="Floor690" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(347, 185)
+
+[node name="Floor691" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 161)
+
+[node name="Floor692" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 173)
+
+[node name="Floor693" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 232)
+
+[node name="Floor694" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 125)
+
+[node name="Floor695" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 137)
+
+[node name="Floor696" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 149)
+
+[node name="Floor697" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 220)
+
+[node name="Floor698" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 209)
+
+[node name="Floor699" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 197)
+
+[node name="Floor700" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(358, 185)
+
+[node name="Floor701" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 161)
+
+[node name="Floor702" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 173)
+
+[node name="Floor703" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 232)
+
+[node name="Floor704" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 125)
+
+[node name="Floor705" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 137)
+
+[node name="Floor706" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 149)
+
+[node name="Floor707" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 220)
+
+[node name="Floor708" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 209)
+
+[node name="Floor709" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 197)
+
+[node name="Floor710" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(369, 185)
+
+[node name="Floor711" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 161)
+
+[node name="Floor712" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 173)
+
+[node name="Floor713" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 232)
+
+[node name="Floor714" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 125)
+
+[node name="Floor715" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 137)
+
+[node name="Floor716" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 149)
+
+[node name="Floor717" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 220)
+
+[node name="Floor718" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 209)
+
+[node name="Floor719" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 197)
+
+[node name="Floor720" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(380, 185)
+
+[node name="Floor721" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 161)
+
+[node name="Floor722" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 173)
+
+[node name="Floor723" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 232)
+
+[node name="Floor724" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 125)
+
+[node name="Floor725" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 137)
+
+[node name="Floor726" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 149)
+
+[node name="Floor727" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 220)
+
+[node name="Floor728" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 209)
+
+[node name="Floor729" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 197)
+
+[node name="Floor730" parent="floorTiles" instance=ExtResource("1_o4s7t")]
+position = Vector2(391, 185)

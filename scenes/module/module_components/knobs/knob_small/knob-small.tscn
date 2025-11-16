@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8derjjy0tsxb"]
+
+[ext_resource type="Script" uid="uid://bboml54wchh0f" path="res://scenes/module/module_components/knobs/knob_small/knob_small.gd" id="1_57xym"]
+[ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="2_re55p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2f7x"]
+size = Vector2(6.166667, 6.3333335)
+
+[node name="Knob" type="Node2D" node_paths=PackedStringArray("debug_label")]
+position = Vector2(48, 0)
+scale = Vector2(6, 6)
+script = ExtResource("1_57xym")
+debug = true
+debug_label = NodePath("Label")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.083333336, 0)
+shape = SubResource("RectangleShape2D_e2f7x")
+
+[node name="SmallSprite" type="Sprite2D" parent="."]
+position = Vector2(0.16666667, 0.16666667)
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(30.980307, 118.99081, 5.0338078, 5.022934)
+
+[node name="arm - 0" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(1.0171618, 113.0742, 4.9940877, 4.9024506)
+
+[node name="arm - 1" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(7.037838, 113.1312, 4.9270477, 4.8288345)
+
+[node name="arm - 2" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(13.022129, 113.05624, 4.9414616, 4.947777)
+
+[node name="arm - 3" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(18.982903, 113.03211, 5.0527153, 5.0017014)
+
+[node name="arm - 4" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(25.011164, 112.9722, 4.948284, 5.0628204)
+
+[node name="arm - 5" type="Sprite2D" parent="SmallSprite"]
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(31.026726, 113.062126, 4.9566154, 4.9635544)
+
+[node name="arm - 6" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(25.047903, 119.05519, 4.9219074, 4.9843826)
+
+[node name="arm - 7" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(19.019108, 119.04138, 4.9793415, 5.0235214)
+
+[node name="arm - 8" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(13.015143, 119.059525, 5.0399275, 5.001747)
+
+[node name="arm - 9" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(7.0395813, 119.05381, 4.986476, 4.9253845)
+
+[node name="arm - 10" type="Sprite2D" parent="SmallSprite"]
+visible = false
+z_index = 1
+texture = ExtResource("2_re55p")
+region_enabled = true
+region_rect = Rect2(1.0239596, 119.069084, 4.96357, 4.9635696)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(3.86, 3.86)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 27.166666
+offset_top = -11.166667
+offset_right = 57.166664
+offset_bottom = 12.500001
+text = "test"
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

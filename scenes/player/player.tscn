@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cr4arftaxn5q5"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://scenes/player/player.gd" id="1_w6k1b"]
-[ext_resource type="Texture2D" uid="uid://qatmlyvxrcnm" path="res://[FREE] Industrial Tileset/FREE/6. Character Animations 32p/Anim_Robot_Jump1_v1.1_frames/1.png" id="2_v8if1"]
+[ext_resource type="Texture2D" uid="uid://qatmlyvxrcnm" path="res://assets/[FREE] Industrial Tileset/FREE/6. Character Animations 32p/Anim_Robot_Jump1_v1.1_frames/1.png" id="2_v8if1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uroli"]
 size = Vector2(14, 20)
