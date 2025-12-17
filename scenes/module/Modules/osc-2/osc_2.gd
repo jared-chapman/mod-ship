@@ -20,6 +20,8 @@ func _ready() -> void:
 	sin_out = outputs[0]
 	sqr_out = outputs[1]
 
+	width_hp = 4
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

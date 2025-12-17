@@ -28,9 +28,11 @@ func _ready() -> void:
 	jack_3 = inputs[2]
 	out_3  = outputs[2]
 
+	width_hp = 4
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# normal the inputs
 	if not in_2.connected:
 		in_2.set_value(out_1.value)

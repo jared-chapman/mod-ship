@@ -8,11 +8,9 @@ var placing_module_instance
 @export var test_placing_module: PackedScene
 @export var test_placing_module_2: PackedScene
 
-var hp_width: int = 48
-var single_units_per_hp: int = 4
-var single_unit_width: int = int(hp_width / single_units_per_hp)
+var ONE_HP_IN_PIXELS: int = 12 
+var ANCHOR_POINTS_PER_HP: int = 4
 var temp_unit_total = 79
-var test_module_width = 4
 
 var _all_inputs := []
 var _all_outputs := []
@@ -26,6 +24,7 @@ var _candidate_anchors = []
 
 # For cable visualization
 var CableScene := preload("res://scenes/Cable/cable.tscn")
+var current_cable: Node = null
 var cables: Array = []
 
 
@@ -37,7 +36,7 @@ func _ready() -> void:
 	for i in temp_unit_total:
 		var anchor = anchor_point.new()
 		anchor.name = "anchor_%d" % (i + 1)
-		anchor.position = Vector2($TopLeftAnchor.position.x + (single_unit_width * i + 1), $TopLeftAnchor.position.y)
+		anchor.position = Vector2($TopLeftAnchor.position.x + (ONE_HP_IN_PIXELS * i + 1), $TopLeftAnchor.position.y)
 		anchor.available = true
 		anchor.index = i + 1
 		anchors.append(anchor)
@@ -49,7 +48,9 @@ func _process(_delta: float) -> void:
 
 
 func _input(event):
+	# -------------- FOR TESTING - REMOVE --------------#
 	if event.is_action_pressed("x"):
+		clear_placing_module()
 		placing_module = test_placing_module
 		if placing_module:
 			var instance = placing_module.instantiate()
@@ -58,21 +59,24 @@ func _input(event):
 			placing_module_instance = instance
 			
 	if event.is_action_pressed("c"):
+		clear_placing_module()
 		placing_module = test_placing_module_2
 		if placing_module:
 			var instance = placing_module.instantiate()
 			instance.width_hp = 4
 			add_child(instance)
 			placing_module_instance = instance
+	# -------------- FOR TESTING - REMOVE --------------#
 
 	# while placing module
 	if placing_module_instance:
+		var module_width = placing_module_instance.width_hp
 		if not _candidate_anchors:
-			_set_candidate_anchors(test_module_width)
+			_set_candidate_anchors(module_width)
 		
 		# mouse position should be center of module
 		var mouse_pos = get_global_mouse_position()
-		var mouse_off = Vector2(-(placing_module_instance.width_hp * single_unit_width * 2), 0)
+		var mouse_off = Vector2(-(placing_module_instance.width_hp * ONE_HP_IN_PIXELS * 2), 0)
 		var placement_pos = mouse_pos + mouse_off
 		var closest_anchor = $TopLeftAnchor
 		var closest_dist = INF
@@ -86,18 +90,32 @@ func _input(event):
 		placing_module_instance.position = closest_anchor.position
 
 		if event.is_action_pressed("left_click"):
-			_load_module(placing_module, test_module_width, _candidate_placement_node)
+			_load_module(placing_module, module_width, _candidate_placement_node)
 			placing_module_instance.queue_free()
 			placing_module_instance = null
 			_candidate_anchors = []
 
+	# while NOT placing module
+	else:
+		if event.is_action_pressed("space"):
+			current_cable = CableScene.instantiate()
+			
+			# get_tree().root.add_child(current_cable)
+			self.add_child(current_cable)
 
+
+
+func clear_placing_module() -> void:
+	# clear existing placing module if it exists
+	if placing_module_instance:
+		placing_module_instance.queue_free()
+		placing_module_instance = null
 
 # creates an array of all available anchor points for a given module width
 func _set_candidate_anchors(w: int) -> void:
 	var candidates = []
 	# find the last valid index
-	var last_anchor_index = temp_unit_total - (w * single_units_per_hp) + 2
+	var last_anchor_index = temp_unit_total - (w * ANCHOR_POINTS_PER_HP) + 2
 	while anchors[last_anchor_index].locked and last_anchor_index > 0:
 		last_anchor_index = last_anchor_index - 1
 	print("last_anchor_index", last_anchor_index)
@@ -107,7 +125,7 @@ func _set_candidate_anchors(w: int) -> void:
 			continue
 			
 		var valid = true
-		var sub_anchors = anchors.slice(anchor.index, anchor.index + (w * single_units_per_hp) - 1)
+		var sub_anchors = anchors.slice(anchor.index, anchor.index + (w * ANCHOR_POINTS_PER_HP) - 1)
 		for a in sub_anchors:
 			if not a.available: 
 				valid = false
@@ -126,7 +144,6 @@ func _load_module(module_scene: PackedScene, width: int, anchor) -> void:
 
 	_disable_anchors_by_index_and_hp(anchor.index, width)
 
-	# 👇 Make it compatible with ModuleParent
 	if module_instance is ModuleParent:
 		module_instance.setup()
 		
@@ -150,30 +167,18 @@ func _load_module(module_scene: PackedScene, width: int, anchor) -> void:
 
 
 func _disable_anchors_by_index_and_hp(index: int, hp: int):
-	var last_index = index + (hp * single_units_per_hp) - 1
+	var last_index = index + (hp * ANCHOR_POINTS_PER_HP) - 1
 	for anchor in anchors:
 		if anchor.index >= index and anchor.index <= last_index:
 			anchor.available = false
 			anchor.locked = true
 
 
-func _create_test_connection(module_instance: ModuleParent):
-	if module_instance.outputs.is_empty() or module_instance.inputs.is_empty():
-		return
-	
-	var out_jack = module_instance.outputs[3]  # first output
-	var in_jack = module_instance.inputs[3]    # first input
-	_create_connection(in_jack, out_jack)
-
 
 func _create_connection(in_jack, out_jack):
-
-	# Draw cable
-	var cable = CableScene.instantiate()
-	cable.output_jack = out_jack
-	cable.input_jack = in_jack
-	add_child(cable)
-	cables.append(cable)
+	if current_cable:
+		# add_child(current_cable)
+		cables.append(current_cable)
 
 	# Forward output values to input
 	out_jack.output_value_changed.connect(func(_n, val):
@@ -189,6 +194,7 @@ func _on_jack_clicked(jack) -> void:
 	if _candidate_jack_connection == null:
 		print("setting candidate to ", jack, " - in: ", jack.is_input)
 		_candidate_jack_connection = jack
+		current_cable.place_a(jack.global_position)
 		return
 		
 	else:
@@ -212,5 +218,6 @@ func _on_jack_clicked(jack) -> void:
 			print("oopsie")
 			_candidate_jack_connection = null
 			return
+		current_cable.place_b(jack.global_position)
 		_create_connection(_in, _out)
 		_candidate_jack_connection = null

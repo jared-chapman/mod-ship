@@ -20,8 +20,3 @@ metadata/_edit_lock_ = true
 position = Vector2(3, 5)
 shape = SubResource("RectangleShape2D_uroli")
 metadata/_edit_lock_ = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-55, 1)
-offset = Vector2(-152.63, 0)
-zoom = Vector2(2.5, 2.5)

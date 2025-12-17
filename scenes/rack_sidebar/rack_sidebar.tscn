@@ -21,7 +21,3 @@ region_rect = Rect2(11.968408, 140.01558, 172.06883, 72.02046)
 [node name="TopLeftAnchor" type="Node2D" parent="."]
 position = Vector2(24, 24)
 script = ExtResource("5_soacb")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(503, 218)
-zoom = Vector2(1.65, 1.65)

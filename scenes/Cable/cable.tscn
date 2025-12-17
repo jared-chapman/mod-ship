@@ -1,8 +1,312 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn6jbswfy3q0e"]
+[gd_scene load_steps=10 format=3 uid="uid://dn6jbswfy3q0e"]
 
 [ext_resource type="Script" uid="uid://btdpwtnd4cbwh" path="res://scenes/cable/cable.gd" id="1_uwpvw"]
+[ext_resource type="Texture2D" uid="uid://dtroi52ayo33x" path="res://assets/cable-v1.png" id="2_a2jud"]
+[ext_resource type="Script" uid="uid://cp6td2hmyfbv8" path="res://scripts/End.gd" id="2_b0h6n"]
+[ext_resource type="Texture2D" uid="uid://dchb6ki8he1gv" path="res://assets/jack-v1-plugged.png" id="4_pnq7s"]
+[ext_resource type="Script" uid="uid://rwluaxl3ugnl" path="res://scenes/cable/segment_1.gd" id="4_qgvb5"]
+[ext_resource type="Texture2D" uid="uid://du62hrxlbh3gi" path="res://assets/jack-v1-link.png" id="5_pnq7s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2jud"]
+size = Vector2(36.083332, 47.833332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0h6n"]
+size = Vector2(36, 48)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0h6n"]
+radius = 8.0
+height = 66.0
 
 [node name="Cable" type="Node2D"]
+z_index = 30
 script = ExtResource("1_uwpvw")
 
 [node name="Line2D" type="Line2D" parent="."]
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="EndA" type="RigidBody2D" parent="."]
+position = Vector2(1, -32)
+collision_layer = 256
+mass = 2.239
+linear_damp = 5.0
+angular_damp = 10.0
+script = ExtResource("2_b0h6n")
+metadata/_edit_group_ = true
+
+[node name="Unplugged" type="Sprite2D" parent="EndA"]
+position = Vector2(0, -7)
+scale = Vector2(6, 6)
+texture = ExtResource("2_a2jud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndA"]
+shape = SubResource("RectangleShape2D_a2jud")
+
+[node name="Plugged" type="Sprite2D" parent="EndA"]
+position = Vector2(-1, 33)
+scale = Vector2(6, 6)
+texture = ExtResource("4_pnq7s")
+
+[node name="EndB" type="RigidBody2D" parent="."]
+position = Vector2(0, 638)
+collision_layer = 256
+mass = 0.039
+linear_damp = 5.0
+angular_damp = 8.0
+script = ExtResource("2_b0h6n")
+metadata/_edit_group_ = true
+
+[node name="Unplugged" type="Sprite2D" parent="EndB"]
+position = Vector2(0, 38)
+rotation = -3.1415925
+scale = Vector2(6, 6)
+texture = ExtResource("2_a2jud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndB"]
+position = Vector2(-1, 32)
+shape = SubResource("RectangleShape2D_b0h6n")
+
+[node name="Plugged" type="Sprite2D" parent="EndB"]
+position = Vector2(-1, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("4_pnq7s")
+
+[node name="Segment1" type="RigidBody2D" parent="."]
+position = Vector2(0, 32)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment1"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment1"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment2" type="RigidBody2D" parent="."]
+position = Vector2(0, 96)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment2"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment2"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment3" type="RigidBody2D" parent="."]
+position = Vector2(0, 160)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment3"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment3"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment4" type="RigidBody2D" parent="."]
+position = Vector2(0, 224)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment4"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment4"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment5" type="RigidBody2D" parent="."]
+position = Vector2(0, 288)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment5"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment5"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment6" type="RigidBody2D" parent="."]
+position = Vector2(0, 352)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment6"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment6"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment7" type="RigidBody2D" parent="."]
+position = Vector2(0, 415)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment7"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment7"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment8" type="RigidBody2D" parent="."]
+position = Vector2(0, 479)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment8"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment8"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment9" type="RigidBody2D" parent="."]
+position = Vector2(0, 543)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment9"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment9"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Segment10" type="RigidBody2D" parent="."]
+position = Vector2(0, 607)
+collision_layer = 256
+mass = 0.2
+linear_damp = 5.161
+angular_damp = 10.933
+script = ExtResource("4_qgvb5")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment10"]
+position = Vector2(0, 6.2584877e-07)
+shape = SubResource("CapsuleShape2D_b0h6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment10"]
+position = Vector2(0, 2.9802322e-07)
+scale = Vector2(3, 4)
+texture = ExtResource("5_pnq7s")
+
+[node name="Joint_EndA_S1" type="PinJoint2D" parent="."]
+node_a = NodePath("../EndA")
+node_b = NodePath("../Segment1")
+angular_limit_enabled = true
+
+[node name="Joint_S1_S2" type="PinJoint2D" parent="."]
+position = Vector2(0, 64)
+node_a = NodePath("../Segment1")
+node_b = NodePath("../Segment2")
+
+[node name="Joint_S2_S3" type="PinJoint2D" parent="."]
+position = Vector2(0, 128)
+node_a = NodePath("../Segment2")
+node_b = NodePath("../Segment3")
+
+[node name="Joint_S3_S4" type="PinJoint2D" parent="."]
+position = Vector2(0, 192)
+node_a = NodePath("../Segment3")
+node_b = NodePath("../Segment4")
+
+[node name="Joint_S4_S5" type="PinJoint2D" parent="."]
+position = Vector2(0, 256)
+node_a = NodePath("../Segment4")
+node_b = NodePath("../Segment5")
+
+[node name="Joint_S2_S6" type="PinJoint2D" parent="."]
+position = Vector2(0, 320)
+node_a = NodePath("../Segment5")
+node_b = NodePath("../Segment6")
+
+[node name="Joint_S6_S7" type="PinJoint2D" parent="."]
+position = Vector2(0, 383)
+node_a = NodePath("../Segment6")
+node_b = NodePath("../Segment7")
+
+[node name="Joint_S7_S8" type="PinJoint2D" parent="."]
+position = Vector2(0, 447)
+node_a = NodePath("../Segment7")
+node_b = NodePath("../Segment8")
+
+[node name="Joint_S8_S9" type="PinJoint2D" parent="."]
+position = Vector2(0, 511)
+node_a = NodePath("../Segment8")
+node_b = NodePath("../Segment9")
+
+[node name="Joint_S9_S10" type="PinJoint2D" parent="."]
+position = Vector2(0, 576)
+node_a = NodePath("../Segment9")
+node_b = NodePath("../Segment10")
+
+[node name="Joint_S10_EndB" type="PinJoint2D" parent="."]
+position = Vector2(0, 590)
+node_a = NodePath("../Segment10")
+node_b = NodePath("../EndB")
+angular_limit_lower = -0.12915437
+angular_limit_upper = 0.12915437
+motor_target_velocity = 3.4906585
