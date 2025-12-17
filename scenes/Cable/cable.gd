@@ -49,7 +49,6 @@ func _ready():
 
 func _process(_delta):
 
-
 	if state == 'zero':
 		pass
 	if state == 'placing_a':
@@ -65,7 +64,6 @@ func place_a(pos):
 	end_a.stay_at_position = _end_a_position
 	end_a.follow_mouse = false
 	end_b.follow_mouse = true
-	end_a.freeze = true
 
 	state = 'placing_b'
 
@@ -77,6 +75,5 @@ func place_b(pos):
 	end_b.stay_at_position = _end_b_position
 	end_a.follow_mouse = false
 	end_b.follow_mouse = false
-	end_b.freeze = true
 	
 	state = 'placed'

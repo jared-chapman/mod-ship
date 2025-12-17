@@ -34,15 +34,16 @@ mass = 2.239
 linear_damp = 5.0
 angular_damp = 10.0
 script = ExtResource("2_b0h6n")
-metadata/_edit_group_ = true
 
 [node name="Unplugged" type="Sprite2D" parent="EndA"]
-position = Vector2(0, -7)
+position = Vector2(-1, 32)
 scale = Vector2(6, 6)
 texture = ExtResource("2_a2jud")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndA"]
+position = Vector2(-1, 38)
 shape = SubResource("RectangleShape2D_a2jud")
+metadata/_edit_group_ = true
 
 [node name="Plugged" type="Sprite2D" parent="EndA"]
 position = Vector2(-1, 33)
@@ -50,7 +51,7 @@ scale = Vector2(6, 6)
 texture = ExtResource("4_pnq7s")
 
 [node name="EndB" type="RigidBody2D" parent="."]
-position = Vector2(0, 638)
+position = Vector2(-1, 636)
 collision_layer = 256
 mass = 0.039
 linear_damp = 5.0
@@ -59,17 +60,15 @@ script = ExtResource("2_b0h6n")
 metadata/_edit_group_ = true
 
 [node name="Unplugged" type="Sprite2D" parent="EndB"]
-position = Vector2(0, 38)
+position = Vector2(0, 14)
 rotation = -3.1415925
 scale = Vector2(6, 6)
 texture = ExtResource("2_a2jud")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndB"]
-position = Vector2(-1, 32)
 shape = SubResource("RectangleShape2D_b0h6n")
 
 [node name="Plugged" type="Sprite2D" parent="EndB"]
-position = Vector2(-1, 0)
 scale = Vector2(6, 6)
 texture = ExtResource("4_pnq7s")
 
@@ -304,7 +303,7 @@ node_a = NodePath("../Segment9")
 node_b = NodePath("../Segment10")
 
 [node name="Joint_S10_EndB" type="PinJoint2D" parent="."]
-position = Vector2(0, 590)
+position = Vector2(0, 620)
 node_a = NodePath("../Segment10")
 node_b = NodePath("../EndB")
 angular_limit_lower = -0.12915437

@@ -11,7 +11,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if stay_at_position and (global_position.distance_to(stay_at_position)) < 0.1:
+		freeze = true
 	pass
 
 
