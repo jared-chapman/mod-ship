@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 @export var move_speed := 1200.0
-@export var follow_strength := 25.0
-@export var max_speed := 2000.0
+@export var follow_strength := 35.0
+@export var max_speed := 3000.0
 
 # the total length of the cable
 @export var max_length := 50.0

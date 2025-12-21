@@ -31,9 +31,9 @@ antialiased = true
 [node name="EndA" type="RigidBody2D" parent="."]
 position = Vector2(0, 1)
 collision_layer = 256
-mass = 0.681
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 1.248
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("2_b0h6n")
 
 [node name="Unplugged" type="Sprite2D" parent="EndA"]
@@ -53,9 +53,9 @@ texture = ExtResource("4_pnq7s")
 [node name="EndB" type="RigidBody2D" parent="."]
 position = Vector2(0, 584)
 collision_layer = 256
-mass = 1.01
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 1.248
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("2_b0h6n")
 
 [node name="Unplugged" type="Sprite2D" parent="EndB"]
@@ -75,9 +75,9 @@ texture = ExtResource("4_pnq7s")
 [node name="Segment1" type="RigidBody2D" parent="."]
 position = Vector2(0, 32)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -93,9 +93,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment2" type="RigidBody2D" parent="."]
 position = Vector2(0, 91)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -111,9 +111,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment3" type="RigidBody2D" parent="."]
 position = Vector2(0, 150)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -129,9 +129,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment4" type="RigidBody2D" parent="."]
 position = Vector2(0, 204)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -147,9 +147,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment5" type="RigidBody2D" parent="."]
 position = Vector2(0, 263)
 collision_layer = 256
-mass = 0.399
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -165,9 +165,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment6" type="RigidBody2D" parent="."]
 position = Vector2(0, 322)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -183,9 +183,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment7" type="RigidBody2D" parent="."]
 position = Vector2(0, 380)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -201,9 +201,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment8" type="RigidBody2D" parent="."]
 position = Vector2(0, 439)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -219,9 +219,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment9" type="RigidBody2D" parent="."]
 position = Vector2(0, 498)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -237,9 +237,9 @@ texture = ExtResource("5_pnq7s")
 [node name="Segment10" type="RigidBody2D" parent="."]
 position = Vector2(0, 557)
 collision_layer = 256
-mass = 0.2
-linear_damp = 2.853
-angular_damp = 20.807
+mass = 0.545
+linear_damp = 5.456
+angular_damp = 5.189
 script = ExtResource("4_qgvb5")
 metadata/_edit_group_ = true
 
@@ -257,77 +257,106 @@ node_a = NodePath("../EndA")
 node_b = NodePath("../Segment1")
 bias = 0.9
 softness = 0.05
-angular_limit_enabled = true
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S1_S2" type="PinJoint2D" parent="."]
 position = Vector2(0, 64)
 node_a = NodePath("../Segment1")
 node_b = NodePath("../Segment2")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S2_S3" type="PinJoint2D" parent="."]
 position = Vector2(0, 120)
 node_a = NodePath("../Segment2")
 node_b = NodePath("../Segment3")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S3_S4" type="PinJoint2D" parent="."]
 position = Vector2(0, 176)
 node_a = NodePath("../Segment3")
 node_b = NodePath("../Segment4")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S4_S5" type="PinJoint2D" parent="."]
 position = Vector2(0, 233)
 node_a = NodePath("../Segment4")
 node_b = NodePath("../Segment5")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S2_S6" type="PinJoint2D" parent="."]
 position = Vector2(0, 293)
 node_a = NodePath("../Segment5")
 node_b = NodePath("../Segment6")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S6_S7" type="PinJoint2D" parent="."]
 position = Vector2(0, 351)
 node_a = NodePath("../Segment6")
 node_b = NodePath("../Segment7")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S7_S8" type="PinJoint2D" parent="."]
 position = Vector2(0, 410)
 node_a = NodePath("../Segment7")
 node_b = NodePath("../Segment8")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S8_S9" type="PinJoint2D" parent="."]
 position = Vector2(0, 469)
 node_a = NodePath("../Segment8")
 node_b = NodePath("../Segment9")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S9_S10" type="PinJoint2D" parent="."]
 position = Vector2(0, 528)
 node_a = NodePath("../Segment9")
 node_b = NodePath("../Segment10")
+bias = 0.9
 softness = 0.05
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
 
 [node name="Joint_S10_EndB" type="PinJoint2D" parent="."]
 position = Vector2(0, 584)
 node_a = NodePath("../Segment10")
 node_b = NodePath("../EndB")
+bias = 0.9
 softness = 0.05
-angular_limit_lower = -0.12915437
-angular_limit_upper = 0.12915437
+angular_limit_lower = -3.1415927
+angular_limit_upper = 3.1415927
 motor_target_velocity = -3.4906585
