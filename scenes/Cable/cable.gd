@@ -3,6 +3,8 @@ extends Node2D
 @export var line: Line2D
 @export var debug := true
 
+@export var v2_test:= true
+
 # the jacks that this cable is connected to
 var output_jack: Node2D
 var input_jack: Node2D
@@ -21,6 +23,21 @@ var input_jack: Node2D
 	$Segment9,
 	$Segment10,
 ]
+@onready var joints := [
+	$Joint_EndA_S1,
+	$Joint_S1_S2,
+	$Joint_S2_S3,
+	$Joint_S3_S4,
+	$Joint_S4_S5,
+	$Joint_S5_S6,
+	$Joint_S6_S7,
+	$Joint_S7_S8,
+	$Joint_S8_S9,
+	$Joint_S9_S10,
+	$Joint_S10_EndB,
+]
+
+@onready var cable_length = 550
 
 
 # placing_a, placing_b, placed
@@ -45,6 +62,8 @@ func _ready():
 
 	position = get_global_mouse_position()
 
+	# can set cable length to distabce between a and b here
+
 	print("cable instantiated")
 
 func _process(_delta):
@@ -57,8 +76,8 @@ func _process(_delta):
 		pass
 
 func place_a(pos):
-	var DEBUG_JACK_OFFSET = Vector2(0, -30)
-	_end_a_position = pos + DEBUG_JACK_OFFSET
+	var DEBUG_JACK_OFFSET = Vector2(0, 0)
+	_end_a_position = pos
 	end_a.set_plugged(true)
 
 	end_a.stay_at_position = _end_a_position

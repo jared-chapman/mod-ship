@@ -191,6 +191,7 @@ func _create_connection(in_jack, out_jack):
 	out_jack.connected = true
 
 func _on_jack_clicked(jack) -> void:
+	var default_cable_length = 550
 	if _candidate_jack_connection == null:
 		print("setting candidate to ", jack, " - in: ", jack.is_input)
 		_candidate_jack_connection = jack
@@ -201,6 +202,9 @@ func _on_jack_clicked(jack) -> void:
 		print("candidate is input: ", _candidate_jack_connection.is_input)
 		print("selected is input: ", jack.is_input)
 
+		if _candidate_jack_connection.global_position.distance_to(jack.global_position) > default_cable_length:
+			print("too far")
+			return
 		
 		var _out
 		var _in
