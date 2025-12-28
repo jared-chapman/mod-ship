@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 @export var move_speed := 1200.0
-@export var follow_strength := 35.0
-@export var max_speed := 3000.0
+@export var follow_strength := 15.0
+@export var max_speed := 1000.0
 
 # the total length of the cable
 @export var max_length := 50.0
@@ -52,37 +52,6 @@ func _integrate_forces(state):
 	else:
 		return
 
-	
-
-	# var target := Vector2.ZERO
-
-	# if follow_mouse:
-	# 	target = get_global_mouse_position()
-	# elif stay_at_position != Vector2.ZERO:
-	# 	target = stay_at_position
-	# else: return
-
-	# var to_target = target - state.transform.origin
-	# var max_step = move_speed * state.step
-
-	# if to_target.length() <= max_step:
-	# 	state.transform.origin = target
-	# 	state.linear_velocity =Vector2.ZERO
-	# else:
-	# 	state.transform.origin += to_target.normalized() * max_step
-	# 	state.linear_velocity = Vector2.ZERO
-
-	# state.angular_velocity = 0
-
-
-	# 	state.transform.origin = get_global_mouse_position()
-	# 	state.linear_velocity = Vector2.ZERO;
-	# 	state.angular_velocity = 0
-
-	# elif stay_at_position != Vector2.ZERO:
-	# 	state.transform.origin = stay_at_position
-	# 	state.linear_velocity = Vector2.ZERO;
-	# 	state.angular_velocity = 0;
 
 
 func set_plugged(plugged: bool) -> void:

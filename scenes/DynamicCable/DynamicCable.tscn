@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://rudi1g5miopb"]
+
+[ext_resource type="Script" uid="uid://d2tyo0konj4x8" path="res://scenes/DynamicCable/dynamic_cable.gd" id="1_aorqe"]
+[ext_resource type="Script" uid="uid://cp6td2hmyfbv8" path="res://scripts/End.gd" id="2_r5dqr"]
+[ext_resource type="Texture2D" uid="uid://dtroi52ayo33x" path="res://assets/cable-v1.png" id="3_aggbi"]
+[ext_resource type="Texture2D" uid="uid://dchb6ki8he1gv" path="res://assets/jack-v1-plugged.png" id="4_533e5"]
+[ext_resource type="Script" uid="uid://rwluaxl3ugnl" path="res://scenes/Cable/segment_1.gd" id="5_8tqng"]
+[ext_resource type="Texture2D" uid="uid://du62hrxlbh3gi" path="res://assets/jack-v1-link.png" id="6_cfabv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wu4k"]
+size = Vector2(36.083332, 47.833332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2ngm"]
+size = Vector2(36, 48)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3e0aj"]
+radius = 8.0
+height = 52.0
+
+[node name="DynamicCable" type="Node2D"]
+script = ExtResource("1_aorqe")
+number_of_segments = 6
+total_length_in_pixels = 250
+segment_goal_mass = 0.72
+
+[node name="EndA" type="RigidBody2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 256
+mass = 1.248
+linear_damp = 5.456
+angular_damp = 5.189
+script = ExtResource("2_r5dqr")
+metadata/_edit_group_ = true
+
+[node name="Unplugged" type="Sprite2D" parent="EndA"]
+position = Vector2(0, -37)
+scale = Vector2(6, 6)
+texture = ExtResource("3_aggbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndA"]
+position = Vector2(0, -31)
+shape = SubResource("RectangleShape2D_8wu4k")
+
+[node name="Plugged" type="Sprite2D" parent="EndA"]
+position = Vector2(0, -1)
+scale = Vector2(6, 6)
+texture = ExtResource("4_533e5")
+
+[node name="EndB" type="RigidBody2D" parent="."]
+position = Vector2(59, 0)
+collision_layer = 256
+mass = 1.064
+linear_damp = 5.456
+angular_damp = 5.189
+script = ExtResource("2_r5dqr")
+metadata/_edit_group_ = true
+
+[node name="Unplugged" type="Sprite2D" parent="EndB"]
+position = Vector2(-2.2737368e-13, 38)
+rotation = -3.1415925
+scale = Vector2(6, 6)
+texture = ExtResource("3_aggbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndB"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_k2ngm")
+
+[node name="Plugged" type="Sprite2D" parent="EndB"]
+scale = Vector2(6, 6)
+texture = ExtResource("4_533e5")
+
+[node name="Segment" type="RigidBody2D" parent="."]
+position = Vector2(-59, 10)
+collision_layer = 256
+mass = 0.729
+linear_damp = 5.456
+angular_damp = 5.189
+script = ExtResource("5_8tqng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment"]
+position = Vector2(0, 24)
+shape = SubResource("CapsuleShape2D_3e0aj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Segment"]
+visible = false
+position = Vector2(-24, 2.3841858e-07)
+scale = Vector2(3, 3)
+texture = ExtResource("6_cfabv")
+centered = false
+
+[node name="Joint" type="PinJoint2D" parent="."]
+position = Vector2(125, -15)
+softness = 0.97
+angular_limit_lower = 1.4835298
+angular_limit_upper = 1.6580628
+motor_target_velocity = -3.4906585
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(85, 97)
