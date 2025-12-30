@@ -17,8 +17,8 @@ func _ready() -> void:
 	setup()
 	speed = inputs[0]
 	mode_select = inputs[1]
-	sin_out = outputs[0]
-	sqr_out = outputs[1]
+	sin_out = outputs[1]
+	sqr_out = outputs[0]
 
 	width_hp = 4
 
@@ -51,9 +51,9 @@ func _process_wave(delta: float, shape: String, freq: float) -> float:
 			return normalized
 		"sqr":
 			
-			var normalized = 0
+			var normalized = 1
 			if _phase > PI:
-				normalized = 1
+				normalized = 0
 			return normalized
 		_:
 			pass

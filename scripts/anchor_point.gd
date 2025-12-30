@@ -8,7 +8,7 @@ class_name AnchorPoint
 @export var index: int = -1
 
 # debug will color / make visible
-@export var debug: bool = false
+@export var debug: bool = true
 
 const DOT_RADIUS := 4.0
 
@@ -23,5 +23,5 @@ func _draw() -> void:
 	if not debug:
 		return  # do nothing if debug disabled
 
-	var color: Color = Color.GREEN if available else Color.BLUE if candidate else Color.RED
+	var color: Color =  Color.BLUE if candidate else Color.GREEN if available else Color.RED
 	draw_circle(Vector2.ZERO, DOT_RADIUS, color)
