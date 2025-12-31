@@ -189,10 +189,10 @@ func _disable_anchors_by_index_and_hp(index: int, hp: int):
 			anchor.available = false
 			anchor.locked = true
 
+
 func _clear_candidate_anchors() -> void:
 	for a in anchors:
 		a.candidate = false
-
 
 
 func _create_connection(in_jack, out_jack):
@@ -215,7 +215,6 @@ func _create_connection(in_jack, out_jack):
 	_candidate_jack_connection = null
 
 func _on_jack_clicked(jack) -> void:
-	var default_cable_length = 550
 
 	######################################################
 	#                       Scenario 1                   #

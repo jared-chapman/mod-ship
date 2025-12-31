@@ -82,6 +82,7 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_right = 314.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -106,15 +107,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="RackName" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="ModuleList" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
 [node name="Top Rack" type="Node2D" parent="VBoxContainer"]
 
 [node name="RackSidebar" parent="VBoxContainer/Top Rack" instance=ExtResource("2_fp1bc")]
-position = Vector2(8, 124)
+position = Vector2(14, 31)
 default_test_module = SubResource("PackedScene_4semr")

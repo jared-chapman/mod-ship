@@ -12,6 +12,9 @@ motion_mode = 1
 script = ExtResource("1_w6k1b")
 metadata/_edit_lock_ = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.26, 3.26)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_v8if1")
 metadata/_edit_lock_ = true
