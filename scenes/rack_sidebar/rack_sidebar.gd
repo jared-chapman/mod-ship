@@ -1,4 +1,5 @@
 extends Node2D
+@export var frozen = true
 
 var loaded_modules = []
 @export var default_test_module: PackedScene
@@ -7,6 +8,7 @@ var placing_module: PackedScene = null
 var placing_module_instance
 @export var test_placing_module: PackedScene
 @export var test_placing_module_2: PackedScene
+var related_world_rack = null
 
 var ONE_HP_IN_PIXELS: int = 12 
 var ANCHOR_POINTS_PER_HP: int = 4
@@ -51,6 +53,7 @@ func _process(_delta: float) -> void:
 
 
 func _input(event):
+	if frozen: return
 	# -------------- FOR TESTING - REMOVE --------------#
 	if event.is_action_pressed("x"):
 		_clear_placing_module()
@@ -273,3 +276,10 @@ func _on_jack_clicked(jack) -> void:
 
 		current_cable.place_b(jack.global_position)
 		_create_connection(_in, _out)
+
+# freeze or unfreeze rack to stop physics
+# hide or show rack
+func set_frozen(val):
+	frozen = val
+	self.visible = !val
+	print(self, 'is ', 'frozen' if frozen else 'not frozen', ' and ', 'visible' if self.visible else 'not visible')

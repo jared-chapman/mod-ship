@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://fkw8wgmqsxmu"]
+
+[ext_resource type="Script" uid="uid://dltob12ht15ol" path="res://scenes/Rack/rack.gd" id="1_bdv6y"]
+[ext_resource type="Texture2D" uid="uid://c3qomle7yvh63" path="res://assets/ship-tilemap-simple-1.png" id="2_y2cto"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hqcu"]
+
+[node name="Rack" type="Node2D" groups=["Racks"]]
+script = ExtResource("1_bdv6y")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_4hqcu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y2cto")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
