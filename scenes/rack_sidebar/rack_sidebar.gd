@@ -54,25 +54,25 @@ func _process(_delta: float) -> void:
 
 func _input(event):
 	if frozen: return
-	# -------------- FOR TESTING - REMOVE --------------#
-	if event.is_action_pressed("x"):
-		_clear_placing_module()
-		placing_module = test_placing_module
-		if placing_module:
-			var instance = placing_module.instantiate()
-			instance.width_hp = 4
-			add_child(instance)
-			placing_module_instance = instance
+	# # -------------- FOR TESTING - REMOVE --------------#
+	# if event.is_action_pressed("x"):
+	# 	_clear_placing_module()
+	# 	placing_module = test_placing_module
+	# 	if placing_module:
+	# 		var instance = placing_module.instantiate()
+	# 		instance.width_hp = 4
+	# 		add_child(instance)
+	# 		placing_module_instance = instance
 			
-	if event.is_action_pressed("c"):
-		_clear_placing_module()
-		placing_module = test_placing_module_2
-		if placing_module:
-			var instance = placing_module.instantiate()
-			instance.width_hp = 4
-			add_child(instance)
-			placing_module_instance = instance
-	# -------------- FOR TESTING - REMOVE --------------#
+	# if event.is_action_pressed("c"):
+	# 	_clear_placing_module()
+	# 	placing_module = test_placing_module_2
+	# 	if placing_module:
+	# 		var instance = placing_module.instantiate()
+	# 		instance.width_hp = 4
+	# 		add_child(instance)
+	# 		placing_module_instance = instance
+	# # -------------- FOR TESTING - REMOVE --------------#
 
 	# while placing module
 	if placing_module_instance:
@@ -120,7 +120,13 @@ func _input(event):
 				current_cable.queue_free()
 				current_cable = null
 
-
+func start_placing_module(module: PackedScene) -> void:
+	_clear_placing_module()
+	if module:
+		var instance = module.instantiate()
+		instance.width_hp = 4
+		add_child(instance)
+		placing_module_instance = instance
 
 func _clear_placing_module() -> void:
 	# clear existing placing module if it exists
