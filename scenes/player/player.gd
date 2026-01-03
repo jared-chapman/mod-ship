@@ -20,4 +20,3 @@ func _physics_process(_delta):
 	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	velocity = input.normalized() * speed
 	move_and_slide()
-

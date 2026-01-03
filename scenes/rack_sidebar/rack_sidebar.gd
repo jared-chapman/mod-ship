@@ -9,6 +9,7 @@ var placing_module_instance
 @export var test_placing_module: PackedScene
 @export var test_placing_module_2: PackedScene
 var related_world_rack = null
+var is_main_rack = true
 
 var ONE_HP_IN_PIXELS: int = 12 
 var ANCHOR_POINTS_PER_HP: int = 4
@@ -31,6 +32,8 @@ var cables: Array = []
 
 var GLOBAL_SCALE = 3
 
+signal mouse_entered_rack(rack)
+signal mouse_exited_rack(rack)
 
 func _ready() -> void:
 	# spawn all possible anchor points
@@ -45,7 +48,9 @@ func _ready() -> void:
 		anchor.index = i + 1
 		anchors.append(anchor)
 		add_child(anchor)
-	
+
+	$Area2D.mouse_entered.connect(_on_mouse_entered_rack)
+	$Area2D.mouse_exited.connect(_on_mouse_exited_rack)
 
 
 func _process(_delta: float) -> void:
@@ -109,7 +114,8 @@ func _input(event):
 
 	# while NOT placing module
 	else:
-		if event.is_action_pressed("space"):
+		# for now only create cables from main rack, since it will always be displayed. This may need to change
+		if event.is_action_pressed("space") and is_main_rack:
 			if not current_cable:
 				current_cable = CableScene.instantiate()
 				# random color from list
@@ -123,6 +129,7 @@ func _input(event):
 func start_placing_module(module: PackedScene) -> void:
 	_clear_placing_module()
 	if module:
+		placing_module = module
 		var instance = module.instantiate()
 		instance.width_hp = 4
 		add_child(instance)
@@ -289,3 +296,9 @@ func set_frozen(val):
 	frozen = val
 	self.visible = !val
 	print(self, 'is ', 'frozen' if frozen else 'not frozen', ' and ', 'visible' if self.visible else 'not visible')
+
+func _on_mouse_entered_rack():
+	mouse_entered_rack.emit(self)
+
+func _on_mouse_exited_rack():
+	mouse_exited_rack.emit()

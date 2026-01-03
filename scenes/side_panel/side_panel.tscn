@@ -100,12 +100,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="Top Rack" type="Node2D" parent="VBoxContainer"]
+[node name="TopRack" type="Node2D" parent="VBoxContainer"]
 
-[node name="MainRack" parent="VBoxContainer/Top Rack" groups=["RacksSidebar"] instance=ExtResource("2_fp1bc")]
+[node name="MainRack" parent="VBoxContainer/TopRack" groups=["RacksSidebar"] instance=ExtResource("2_fp1bc")]
 position = Vector2(14, 31)
 frozen = false
 default_test_module = SubResource("PackedScene_4semr")
 
-[node name="BottomRack" type="Node2D" parent="VBoxContainer"]
+[node name="BottomRack" type="Node2D" parent="VBoxContainer" groups=["RacksSidebar"]]
 position = Vector2(23, 521)
