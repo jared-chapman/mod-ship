@@ -108,4 +108,5 @@ frozen = false
 default_test_module = SubResource("PackedScene_4semr")
 
 [node name="BottomRack" type="Node2D" parent="VBoxContainer" groups=["RacksSidebar"]]
+z_index = -9
 position = Vector2(23, 521)

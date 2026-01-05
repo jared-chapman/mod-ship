@@ -1,7 +1,7 @@
 extends Node2D
 class_name ModuleParent
 
-@export var width_hp: int
+@export var width_hp: int = 4
 @export var inputs = []
 @export var outputs = []
 @export var tl_screw_offset = Vector2(9, 9)

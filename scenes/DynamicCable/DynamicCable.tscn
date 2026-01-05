@@ -25,6 +25,8 @@ segment_goal_mass = 0.72
 col = Color(0, 0.096936174, 1.353256, 1)
 
 [node name="EndA" type="RigidBody2D" parent="."]
+z_index = 15
+z_as_relative = false
 collision_layer = 256
 mass = 1.248
 linear_damp = 5.456
@@ -47,6 +49,8 @@ scale = Vector2(6, 6)
 texture = ExtResource("4_533e5")
 
 [node name="EndB" type="RigidBody2D" parent="."]
+z_index = 15
+z_as_relative = false
 position = Vector2(59, 0)
 collision_layer = 256
 mass = 0.962

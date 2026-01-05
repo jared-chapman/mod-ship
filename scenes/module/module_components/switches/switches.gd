@@ -11,7 +11,7 @@ var on_sprite: Sprite2D
 var off_sprite: Sprite2D
 
 
-signal input_value_changed(name: String, value: int)
+signal input_value_changed(_name: String, value: int)
 
 func _ready() -> void:
 	set_value(value)
@@ -31,6 +31,9 @@ func _input(event: InputEvent) -> void:
 				print("setting value - ", value)
 				set_value(new)
 
+func set_input_name(_name):
+	print('setting name to ', _name)
+	input_name = _name
 
 func set_value(val: int) -> void:
 	if is_equal_approx(val, value):

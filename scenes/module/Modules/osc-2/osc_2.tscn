@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckdbf3wb0mrnd"]
 
-[ext_resource type="Script" uid="uid://cgnxglg4hcpyt" path="res://scenes/module/modules/osc-2/osc_2.gd" id="1_aqae1"]
+[ext_resource type="Script" uid="uid://cgnxglg4hcpyt" path="res://scenes/module/Modules/osc-2/osc_2.gd" id="1_aqae1"]
 [ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="2_tiy5i"]
 [ext_resource type="PackedScene" uid="uid://b8derjjy0tsxb" path="res://scenes/module/module_components/knobs/knob_small/knob-small.tscn" id="4_aqae1"]
 [ext_resource type="PackedScene" uid="uid://bc2gvn6836ljb" path="res://scenes/module/module_components/switches/switch_small/switch_small.tscn" id="5_wmtl2"]
 [ext_resource type="PackedScene" uid="uid://c2drth8vrehwo" path="res://scenes/module/module_components/jacks/jack_small/jack_small.tscn" id="6_oqc5y"]
 
-[node name="Atten-2" type="Node2D"]
+[node name="Atten-2" type="Node2D" groups=["Modules"]]
 script = ExtResource("1_aqae1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

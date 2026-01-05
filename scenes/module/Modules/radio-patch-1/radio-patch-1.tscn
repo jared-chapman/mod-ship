@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlh6ait76xoi2"]
+
+[ext_resource type="Script" uid="uid://du5jjw201mvd2" path="res://scenes/module/Modules/radio-patch-1/radio_patch_1.gd" id="1_6b3hn"]
+[ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="2_ydwyc"]
+[ext_resource type="PackedScene" uid="uid://c2drth8vrehwo" path="res://scenes/module/module_components/jacks/jack_small/jack_small.tscn" id="3_hnuja"]
+[ext_resource type="PackedScene" uid="uid://bc2gvn6836ljb" path="res://scenes/module/module_components/switches/switch_small/switch_small.tscn" id="4_nf3na"]
+
+[node name="RadioPatch1" type="Node2D"]
+scale = Vector2(6, 6)
+script = ExtResource("1_6b3hn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ydwyc")
+centered = false
+region_enabled = true
+region_rect = Rect2(192, 0, 32, 64)
+
+[node name="Inputs" type="Node2D" parent="."]
+
+[node name="JackSmall" parent="Inputs" instance=ExtResource("3_hnuja")]
+position = Vector2(8, 19)
+scale = Vector2(0.215, 0.215)
+
+[node name="JackSmall2" parent="Inputs" instance=ExtResource("3_hnuja")]
+position = Vector2(8, 34)
+scale = Vector2(0.215, 0.215)
+
+[node name="JackSmall3" parent="Inputs" instance=ExtResource("3_hnuja")]
+position = Vector2(8, 49)
+scale = Vector2(0.215, 0.215)
+
+[node name="SwitchSmall" parent="Inputs" instance=ExtResource("4_nf3na")]
+position = Vector2(21.555, 19.935)
+scale = Vector2(1, 1)
+
+[node name="SwitchSmall2" parent="Inputs" instance=ExtResource("4_nf3na")]
+position = Vector2(21.535, 34.93)
+scale = Vector2(1, 1)
+
+[node name="SwitchSmall3" parent="Inputs" instance=ExtResource("4_nf3na")]
+position = Vector2(21.475, 49.945)
+scale = Vector2(1, 1)
+
+[node name="Outputs" type="Node2D" parent="."]

@@ -67,4 +67,16 @@ func set_angle_sprites(_angle_sprites: Array) -> void:
 	angle_sprites = _angle_sprites
 
 func set_is_over_knob(val: bool) -> void:
-	_is_over_knob = val
+	var module_parent = find_parent_in_group(self, 'Modules')
+	if module_parent: print('module_parent', module_parent.placing)
+	if module_parent and not module_parent.placing:
+		_is_over_knob = val
+	pass
+
+func find_parent_in_group(node: Node, group_name: String) -> Node:
+	var p = node
+	while p:
+		if p.is_in_group(group_name):
+			return p
+		p = p.get_parent()
+	return null

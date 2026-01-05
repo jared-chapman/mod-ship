@@ -1,14 +1,6 @@
 extends Node2D
 @export var frozen = true
 
-var loaded_modules = []
-@export var default_test_module: PackedScene
-var fill = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-var placing_module: PackedScene = null
-var placing_module_instance
-@export var test_placing_module: PackedScene
-@export var test_placing_module_2: PackedScene
-var related_world_rack = null
 var is_main_rack = true
 
 var ONE_HP_IN_PIXELS: int = 12 
@@ -18,14 +10,14 @@ var temp_unit_total = 79
 var _all_inputs := []
 var _all_outputs := []
 
-var _candidate_placement_node
 var _candidate_jack_connection = null
 
 var anchor_point = preload("res://scripts/anchor_point.gd")
 var anchors = []
-var _candidate_anchors = []
 
-# For cable visualization
+var related_world_rack = null
+
+## For cable visualization
 var CableScene := preload("res://scenes/DynamicCable/DynamicCable.tscn")
 var current_cable: Node = null
 var cables: Array = []
@@ -37,12 +29,13 @@ signal mouse_exited_rack(rack)
 
 func _ready() -> void:
 	# spawn all possible anchor points
-	# anchors.append($TopLeftAnchor)
+	# this could stand to be refactored
 	$TopLeftAnchor.available = true
 	$TopLeftAnchor.index = 0
+	var prefix = "top-anchor-" if is_main_rack else "bot-anchor"
 	for i in temp_unit_total:
 		var anchor = anchor_point.new()
-		anchor.name = "anchor_%d" % (i + 1)
+		anchor.name = "%s%d" % [prefix, (i + 1)]
 		anchor.position = Vector2($TopLeftAnchor.position.x + (ONE_HP_IN_PIXELS * i + 1), $TopLeftAnchor.position.y)
 		anchor.available = true
 		anchor.index = i + 1
@@ -53,103 +46,11 @@ func _ready() -> void:
 	$Area2D.mouse_exited.connect(_on_mouse_exited_rack)
 
 
-func _process(_delta: float) -> void:
-	pass
-
-
-func _input(event):
-	if frozen: return
-	# # -------------- FOR TESTING - REMOVE --------------#
-	# if event.is_action_pressed("x"):
-	# 	_clear_placing_module()
-	# 	placing_module = test_placing_module
-	# 	if placing_module:
-	# 		var instance = placing_module.instantiate()
-	# 		instance.width_hp = 4
-	# 		add_child(instance)
-	# 		placing_module_instance = instance
-			
-	# if event.is_action_pressed("c"):
-	# 	_clear_placing_module()
-	# 	placing_module = test_placing_module_2
-	# 	if placing_module:
-	# 		var instance = placing_module.instantiate()
-	# 		instance.width_hp = 4
-	# 		add_child(instance)
-	# 		placing_module_instance = instance
-	# # -------------- FOR TESTING - REMOVE --------------#
-
-	# while placing module
-	if placing_module_instance:
-		var module_width = placing_module_instance.width_hp
-		if not _candidate_anchors:
-			_set_candidate_anchors(module_width)
-
-		# if we set candidate anchors and it's still null, there are no available slots
-		if not _candidate_anchors:
-			print("No room")
-			_clear_placing_module()
-			return
-		
-		# mouse position should be center of module
-		var mouse_pos = get_global_mouse_position()
-		var mouse_off = Vector2(-(placing_module_instance.width_hp * ONE_HP_IN_PIXELS * 2), 0)
-		var placement_pos = mouse_pos + mouse_off
-		var closest_anchor = $TopLeftAnchor
-		var closest_dist = INF
-		for anchor in _candidate_anchors:
-			var dist = placement_pos.distance_to(anchor.global_position)
-			if dist < closest_dist:
-				closest_dist = dist
-				closest_anchor = anchor
-				_candidate_placement_node = anchor
-				
-		placing_module_instance.position = closest_anchor.position
-
-		if event.is_action_pressed("left_click"):
-			_load_module(placing_module, module_width, _candidate_placement_node)
-			placing_module_instance.queue_free()
-			placing_module_instance = null
-			_candidate_anchors = []
-
-	# while NOT placing module
-	else:
-		# for now only create cables from main rack, since it will always be displayed. This may need to change
-		if event.is_action_pressed("space") and is_main_rack:
-			if not current_cable:
-				current_cable = CableScene.instantiate()
-				# random color from list
-				current_cable.col = GlobalColors.CABLE_COLORS[randi_range(0, GlobalColors.CABLE_COLORS.size()-1)]
-				
-				self.add_child(current_cable)
-			else:
-				current_cable.queue_free()
-				current_cable = null
-
-func start_placing_module(module: PackedScene) -> void:
-	_clear_placing_module()
-	if module:
-		placing_module = module
-		var instance = module.instantiate()
-		instance.width_hp = 4
-		add_child(instance)
-		placing_module_instance = instance
-
-func _clear_placing_module() -> void:
-	# clear existing placing module if it exists
-	if placing_module_instance:
-		placing_module_instance.queue_free()
-		placing_module_instance = null
-	_clear_candidate_anchors()
-
-# creates an array of all available anchor points for a given module width
-func _set_candidate_anchors(w: int) -> void:
+## Creates an array of all available anchor points for a given module width
+func get_candidate_anchors(w: int) -> Array:
 	var candidates = []
-	# find the last valid index
 	var last_anchor_index = temp_unit_total - (w * ANCHOR_POINTS_PER_HP) + 2
 
-	print("last_anchor_index", last_anchor_index)
-	
 	for anchor in anchors:
 		if anchor.index > last_anchor_index:
 			continue
@@ -164,17 +65,18 @@ func _set_candidate_anchors(w: int) -> void:
 		if valid:
 			anchor.candidate = true
 			candidates.append(anchor)
-	_candidate_anchors = candidates
+	return candidates
 		
 
-func _load_module(module_scene: PackedScene, width: int, anchor) -> void:
+## Instantiates a module and loads it into the rack
+func _load_module(module_scene: PackedScene, anchor) -> void:
 	var module_instance = module_scene.instantiate()
+	var width = module_instance.width_hp
 	add_child(module_instance)
 	module_instance.position = anchor.position
-	loaded_modules.append(module_instance)
+	module_instance.placing = false
 
 	_disable_anchors_by_index_and_hp(anchor.index, width)
-	_clear_candidate_anchors()
 
 	if module_instance is ModuleParent:
 		module_instance.setup()
@@ -198,6 +100,7 @@ func _load_module(module_scene: PackedScene, width: int, anchor) -> void:
 			print(output_jack, " connections: ", output_jack.jack_clicked.get_connections().size())
 
 
+## Disables anchor points that would be covered by a module
 func _disable_anchors_by_index_and_hp(index: int, hp: int):
 	var last_index = index + (hp * ANCHOR_POINTS_PER_HP) - 1
 	for anchor in anchors:
@@ -206,10 +109,25 @@ func _disable_anchors_by_index_and_hp(index: int, hp: int):
 			anchor.locked = true
 
 
+## Clears all candidate anchors so they can be recalculated
 func _clear_candidate_anchors() -> void:
 	for a in anchors:
 		a.candidate = false
 
+## Freezes or unfreezes rack to hide and stop physics
+func set_frozen(val):
+	frozen = val
+	self.visible = !val
+
+func _on_mouse_entered_rack():
+	mouse_entered_rack.emit(self)
+
+func _on_mouse_exited_rack():
+	mouse_exited_rack.emit()
+
+
+# the below logic should be moved into the side_panel component
+# so modules from different racks can be connected
 
 func _create_connection(in_jack, out_jack):
 	# Add to list of cables and clear placing cable
@@ -289,16 +207,3 @@ func _on_jack_clicked(jack) -> void:
 
 		current_cable.place_b(jack.global_position)
 		_create_connection(_in, _out)
-
-# freeze or unfreeze rack to stop physics
-# hide or show rack
-func set_frozen(val):
-	frozen = val
-	self.visible = !val
-	print(self, 'is ', 'frozen' if frozen else 'not frozen', ' and ', 'visible' if self.visible else 'not visible')
-
-func _on_mouse_entered_rack():
-	mouse_entered_rack.emit(self)
-
-func _on_mouse_exited_rack():
-	mouse_exited_rack.emit()

@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6n0aos56fpoi"]
 
-[ext_resource type="Script" uid="uid://b26a0xuwsuynn" path="res://scenes/module/modules/atten-2/atten_2.gd" id="1_r7xa3"]
+[ext_resource type="Script" uid="uid://b26a0xuwsuynn" path="res://scenes/module/Modules/atten-2/atten_2.gd" id="1_r7xa3"]
 [ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="2_jstwq"]
 [ext_resource type="PackedScene" uid="uid://b8derjjy0tsxb" path="res://scenes/module/module_components/knobs/knob_small/knob-small.tscn" id="3_l8luo"]
 [ext_resource type="PackedScene" uid="uid://c2drth8vrehwo" path="res://scenes/module/module_components/jacks/jack_small/jack_small.tscn" id="4_28apd"]
 
-[node name="Atten-2" type="Node2D"]
+[node name="Atten-2" type="Node2D" groups=["Modules"]]
 script = ExtResource("1_r7xa3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,11 +14,6 @@ texture = ExtResource("2_jstwq")
 centered = false
 region_enabled = true
 region_rect = Rect2(47.96437, -0.02407217, 32.025314, 64.034325)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(92, 187)
-enabled = false
-zoom = Vector2(1.48, 1.48)
 
 [node name="Inputs" type="Node2D" parent="."]
 
