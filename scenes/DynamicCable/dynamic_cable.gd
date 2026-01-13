@@ -1,12 +1,15 @@
 extends Node2D
 
 @export var number_of_segments: int = 1000;
-@export var total_length_in_pixels: int = 100;
+@export var total_length_in_pixels: int = 140;
+@export var segment_length_in_pixels: int = 50;
+@export var max_length_in_pixels: int = 400;
 @export var segment_goal_mass: float = 5.0;
 @export var col := Color(1, 1, 1, 1)
 
 const GLOBAL_SCALE = 3
 var segments = []
+var joints = []
 
 var state: String = 'placing_a'
 
@@ -26,11 +29,26 @@ func _ready() -> void:
 
 	_build_cable(segment_node, joint_node, end_a, end_b)
 
+	end_a.parent_cable = self
+	end_b.parent_cable = self
+
+	end_a.base_segment_length = segment_length_in_pixels
+	end_b.base_segment_length = segment_length_in_pixels
+
+	end_a.number_of_segments = number_of_segments
+	end_b.number_of_segments = number_of_segments
+
+	end_a.segments = segments
+	end_b.segments = segments
+
+	end_a.joints = joints
+	end_b.joints = joints
+
 	end_a.follow_mouse = true
 	end_b.follow_mouse = false
 
-	end_a.max_length = total_length_in_pixels
-	end_b.max_length = total_length_in_pixels
+	# end_a.max_length = max_length_in_pixels
+	# end_b.max_length = max_length_in_pixels
 	end_a.parent_scale = GLOBAL_SCALE
 	end_b.parent_scale = GLOBAL_SCALE
 
@@ -53,17 +71,16 @@ func _process(_delta: float) -> void:
 
 
 func _build_cable(segment, joint, endA, endB):
-	var SEGMENT_LENGTH := float(total_length_in_pixels) / number_of_segments
 
 	# modify segment so copies inherit scale, etc.
 
 	# set scale
 	var starting_height = segment.get_node("Sprite2D").get_rect().size.y
-	var _scale = SEGMENT_LENGTH / starting_height
+	var _scale = segment_length_in_pixels / starting_height
 	segment.scale = Vector2(1, _scale)
 	segment.mass = segment_goal_mass / number_of_segments
 	print({
-		'SEGMENT_LENGTH': SEGMENT_LENGTH,
+		'segment_length_in_pixels': segment_length_in_pixels,
 		'starting_height': starting_height,
 		'_scale': _scale,
 	})
@@ -73,7 +90,7 @@ func _build_cable(segment, joint, endA, endB):
 
 	# what the next joint will connect to
 	var prev_segment = endA
-	var prev_v_position = mouse_pos.y - (SEGMENT_LENGTH * GLOBAL_SCALE)
+	var prev_v_position = mouse_pos.y - (segment_length_in_pixels * GLOBAL_SCALE)
 
 	# place EndA
 	$EndA.position = mouse_pos
@@ -84,12 +101,12 @@ func _build_cable(segment, joint, endA, endB):
 
 		
 		# place segment
-		var seg_v_pos = prev_v_position + (SEGMENT_LENGTH * GLOBAL_SCALE)
+		var seg_v_pos = prev_v_position + (segment_length_in_pixels * GLOBAL_SCALE)
 		seg_copy.position = Vector2(mouse_pos.x, seg_v_pos)
 		prev_v_position = seg_v_pos
 
 		# place joint
-		# var joint_v_pos = s * (SEGMENT_LENGTH * GLOBAL_SCALE) - (nudge * s)
+		# var joint_v_pos = s * (segment_length_in_pixels * GLOBAL_SCALE) - (nudge * s)
 		# joint_copy.position = Vector2(0, joint_v_pos)
 		joint_copy.position = Vector2(mouse_pos.x, seg_v_pos)
 		
@@ -97,6 +114,7 @@ func _build_cable(segment, joint, endA, endB):
 		add_child(joint_copy)
 		# segments.append(seg_v_pos)
 		segments.append(seg_copy)
+		joints.append(joint_copy)
 
 		# connect joint
 		joint_copy.node_a = prev_segment.get_path()

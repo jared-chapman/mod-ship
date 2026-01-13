@@ -8,7 +8,7 @@ class_name AnchorPoint
 @export var index: int = -1
 
 # debug will color / make visible
-@export var debug: bool = false
+@export var debug: bool = true
 
 const DOT_RADIUS := 4.0
 

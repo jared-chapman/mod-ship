@@ -27,10 +27,14 @@ var placing_module: PackedScene
 var placing_module_instance
 
 # currently unused
-var mouse_over_rack
+# var mouse_over_rack
 
 var current_available_anchor_points = []
 var candidate_placement_node
+
+# All jacks on all modules
+var _all_inputs_jacks = []
+var _all_output_jacks = []
 
 # For cable visualization
 var CableScene := preload("res://scenes/DynamicCable/DynamicCable.tscn")
@@ -55,20 +59,30 @@ func _ready():
 func _set_mouse_over_rack(_rack):
 	pass
 
-
 func _remove_mouse_over_rack():
 	pass
 
+#region input
 # for now, run _temp_module_initiation_intermediate when z/x/c keys are pressed
 #   this is a placeholder for the inventory system 
+# refactor all input naming
 func _input(event):
 	if not shown: return
 	if event.is_action_pressed("z") or event.is_action_pressed("x") or event.is_action_pressed("c"):
 		_temp_module_initiation_intermediate(event)
+	elif event.is_action_pressed("space"):
+		print("space pressed")
+		_handle_initiate_cable_placement()
 	elif event is InputEventMouseMotion: 
 		_module_placement()
-	elif event.is_action_pressed("left_click"):
+	elif event.is_action_pressed("left_click") and placing_module_instance:
 		_place_module()
+#endregion
+
+#region module
+################################################
+#              Module Management               *
+################################################
 
 
 # this will be unnecessary once an inventory system is implemented
@@ -125,9 +139,32 @@ func _module_placement():
 ## Finds rack related to candidate anchor and calls _load_module() on it, passing
 ## the placing_module
 func _place_module():
+	if not placing_module_instance: return
 	var rack_of_active_anchor = get_parent_in_group(candidate_placement_node, 'RacksSidebar')
 	if not candidate_placement_node or not rack_of_active_anchor: return
-	rack_of_active_anchor._load_module(placing_module, candidate_placement_node)
+	var new_module = rack_of_active_anchor._load_module(placing_module, candidate_placement_node)
+
+
+	# set signals of jacks connected to the module
+	_all_inputs_jacks.append(new_module.inputs)
+	_all_output_jacks.append(new_module.outputs)
+	
+	for input_jack in new_module.inputs:
+		if input_jack is Jack:
+			if input_jack.jack_clicked.is_connected(_on_jack_clicked):
+				input_jack.jack_clicked.disconnect(_on_jack_clicked)
+			input_jack.jack_clicked.connect(_on_jack_clicked)
+			print(input_jack, " connections: ", input_jack.jack_clicked.get_connections().size())
+
+			
+	for output_jack in new_module.outputs:
+		if output_jack is Jack:
+			if output_jack.jack_clicked.is_connected(_on_jack_clicked):
+				output_jack.jack_clicked.disconnect(_on_jack_clicked)
+			output_jack.jack_clicked.connect(_on_jack_clicked)
+			print(output_jack, " connections: ", output_jack.jack_clicked.get_connections().size())
+
+
 	_clear_all_candidate_anchors()
 	placing_module_instance.queue_free()
 	placing_module_instance = null
@@ -217,3 +254,112 @@ func get_parent_in_group(_node, _group_name):
 			if parent.is_in_group(_group_name):
 				parent_of_class = parent
 	return parent_of_class
+#endregion
+
+#region cable
+################################################
+#               Cable Management               *
+################################################
+var _candidate_jack_connection = null
+var CABLE_SCALE = 3.0
+
+
+func _handle_initiate_cable_placement() -> void:
+	if current_cable:
+		_destroy_current_cable()
+	else:
+		_create_new_cable()
+
+
+func _destroy_current_cable() -> void:
+	if current_cable:
+		current_cable.queue_free()
+
+
+func _create_new_cable() -> void:
+	current_cable = CableScene.instantiate()
+	add_child(current_cable)
+
+
+func _on_jack_clicked(jack) -> void:
+	######################################################
+	#                       Scenario 1                   #
+	#                  There is no candidate             #
+	#                Set current to candidate            #
+	######################################################
+	if _candidate_jack_connection == null:
+		print("setting candidate to ", jack, " - in: ", jack.is_input)
+		_candidate_jack_connection = jack
+		current_cable.place_a(jack.global_position)
+		return
+		
+	else:
+		print("candidate is input: ", _candidate_jack_connection.is_input)
+		print("selected is input: ", jack.is_input)
+
+		###################################################
+		#                   Scenario 2                    #
+		#         Jack is same type as candidate          #
+		#        Update candidate to new selection        #
+		###################################################
+		if (
+			(jack.is_input and _candidate_jack_connection.is_input) or
+			(not jack.is_input and not _candidate_jack_connection.is_input)
+		):
+			print('cannot connect inputs or outputs together')
+			current_cable.place_a(jack.global_position)
+			return
+
+		###################################################
+		#                   Scenario 3                    #
+		#             Valid type but too far              #
+		#              Print error (for now)              #
+		###################################################
+		if _candidate_jack_connection.global_position.distance_to(jack.global_position) > current_cable.total_length_in_pixels * CABLE_SCALE:
+			print("too far")
+			return
+
+		
+		###################################################
+		#                   Scenario 4                    #
+		#            One input and one output             #
+		#          Place cable and make connection        #
+		###################################################
+		var _out
+		var _in
+		if _candidate_jack_connection.is_input:
+			_in = _candidate_jack_connection
+		else:
+			_out = _candidate_jack_connection
+			
+		if jack.is_input:
+			_in = jack
+		else:
+			_out = jack
+
+		current_cable.place_b(jack.global_position)
+		_create_connection(_in, _out)
+
+
+func _create_connection(in_jack, out_jack):
+	# Add to list of cables and clear placing cable
+	if current_cable:
+		cables.append(current_cable)
+		current_cable = null
+
+	# Forward output values to input
+	out_jack.output_value_changed.connect(func(_n, val):
+		in_jack.set_value(val)
+	)
+
+	# Initialize immediately
+	in_jack.set_value(out_jack.value)
+	in_jack.connected = true
+	out_jack.connected = true
+
+	# Remove candidate
+	_candidate_jack_connection = null
+
+
+
+#endregion

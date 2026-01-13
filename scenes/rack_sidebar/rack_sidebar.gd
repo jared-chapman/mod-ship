@@ -69,7 +69,7 @@ func get_candidate_anchors(w: int) -> Array:
 		
 
 ## Instantiates a module and loads it into the rack
-func _load_module(module_scene: PackedScene, anchor) -> void:
+func _load_module(module_scene: PackedScene, anchor):
 	var module_instance = module_scene.instantiate()
 	var width = module_instance.width_hp
 	add_child(module_instance)
@@ -80,24 +80,26 @@ func _load_module(module_scene: PackedScene, anchor) -> void:
 
 	if module_instance is ModuleParent:
 		module_instance.setup()
+
+	return module_instance
 		
-	_all_inputs.append(module_instance.inputs)
-	_all_outputs.append(module_instance.outputs)
+	# _all_inputs.append(module_instance.inputs)
+	# _all_outputs.append(module_instance.outputs)
 	
-	for input_jack in module_instance.inputs:
-		if input_jack is Jack:
-			if input_jack.jack_clicked.is_connected(_on_jack_clicked):
-				input_jack.jack_clicked.disconnect(_on_jack_clicked)
-			input_jack.jack_clicked.connect(_on_jack_clicked)
-			print(input_jack, " connections: ", input_jack.jack_clicked.get_connections().size())
+	# for input_jack in module_instance.inputs:
+	# 	if input_jack is Jack:
+	# 		if input_jack.jack_clicked.is_connected(_on_jack_clicked):
+	# 			input_jack.jack_clicked.disconnect(_on_jack_clicked)
+	# 		input_jack.jack_clicked.connect(_on_jack_clicked)
+	# 		print(input_jack, " connections: ", input_jack.jack_clicked.get_connections().size())
 
 			
-	for output_jack in module_instance.outputs:
-		if output_jack is Jack:
-			if output_jack.jack_clicked.is_connected(_on_jack_clicked):
-				output_jack.jack_clicked.disconnect(_on_jack_clicked)
-			output_jack.jack_clicked.connect(_on_jack_clicked)
-			print(output_jack, " connections: ", output_jack.jack_clicked.get_connections().size())
+	# for output_jack in module_instance.outputs:
+	# 	if output_jack is Jack:
+	# 		if output_jack.jack_clicked.is_connected(_on_jack_clicked):
+	# 			output_jack.jack_clicked.disconnect(_on_jack_clicked)
+	# 		output_jack.jack_clicked.connect(_on_jack_clicked)
+	# 		print(output_jack, " connections: ", output_jack.jack_clicked.get_connections().size())
 
 
 ## Disables anchor points that would be covered by a module
@@ -148,62 +150,62 @@ func _create_connection(in_jack, out_jack):
 	# Remove candidate
 	_candidate_jack_connection = null
 
-func _on_jack_clicked(jack) -> void:
+# func _on_jack_clicked(jack) -> void:
 
-	######################################################
-	#                       Scenario 1                   #
-	#                  There is no candidate             #
-	#                Set current to candidate            #
-	######################################################
-	if _candidate_jack_connection == null:
-		print("setting candidate to ", jack, " - in: ", jack.is_input)
-		_candidate_jack_connection = jack
-		current_cable.place_a(jack.global_position)
-		return
+# 	######################################################
+# 	#                       Scenario 1                   #
+# 	#                  There is no candidate             #
+# 	#                Set current to candidate            #
+# 	######################################################
+# 	if _candidate_jack_connection == null:
+# 		print("setting candidate to ", jack, " - in: ", jack.is_input)
+# 		_candidate_jack_connection = jack
+# 		current_cable.place_a(jack.global_position)
+# 		return
 		
-	else:
-		print("candidate is input: ", _candidate_jack_connection.is_input)
-		print("selected is input: ", jack.is_input)
+# 	else:
+# 		print("candidate is input: ", _candidate_jack_connection.is_input)
+# 		print("selected is input: ", jack.is_input)
 
-		###################################################
-		#                   Scenario 2                    #
-		#         Jack is same type as candidate          #
-		#        Update candidate to new selection        #
-		###################################################
-		if (
-			(jack.is_input and _candidate_jack_connection.is_input) or
-			(not jack.is_input and not _candidate_jack_connection.is_input)
-		):
-			print('cannot connect inputs or outputs together')
-			current_cable.place_a(jack.global_position)
-			return
+# 		###################################################
+# 		#                   Scenario 2                    #
+# 		#         Jack is same type as candidate          #
+# 		#        Update candidate to new selection        #
+# 		###################################################
+# 		if (
+# 			(jack.is_input and _candidate_jack_connection.is_input) or
+# 			(not jack.is_input and not _candidate_jack_connection.is_input)
+# 		):
+# 			print('cannot connect inputs or outputs together')
+# 			current_cable.place_a(jack.global_position)
+# 			return
 
-		###################################################
-		#                   Scenario 3                    #
-		#             Valid type but too far              #
-		#              Print error (for now)              #
-		###################################################
-		if _candidate_jack_connection.global_position.distance_to(jack.global_position) > current_cable.total_length_in_pixels * GLOBAL_SCALE:
-			print("too far")
-			return
+# 		###################################################
+# 		#                   Scenario 3                    #
+# 		#             Valid type but too far              #
+# 		#              Print error (for now)              #
+# 		###################################################
+# 		if _candidate_jack_connection.global_position.distance_to(jack.global_position) > current_cable.total_length_in_pixels * GLOBAL_SCALE:
+# 			print("too far")
+# 			return
 
 		
-		###################################################
-		#                   Scenario 4                    #
-		#            One input and one output             #
-		#          Place cable and make connection        #
-		###################################################
-		var _out
-		var _in
-		if _candidate_jack_connection.is_input:
-			_in = _candidate_jack_connection
-		else:
-			_out = _candidate_jack_connection
+# 		###################################################
+# 		#                   Scenario 4                    #
+# 		#            One input and one output             #
+# 		#          Place cable and make connection        #
+# 		###################################################
+# 		var _out
+# 		var _in
+# 		if _candidate_jack_connection.is_input:
+# 			_in = _candidate_jack_connection
+# 		else:
+# 			_out = _candidate_jack_connection
 			
-		if jack.is_input:
-			_in = jack
-		else:
-			_out = jack
+# 		if jack.is_input:
+# 			_in = jack
+# 		else:
+# 			_out = jack
 
-		current_cable.place_b(jack.global_position)
-		_create_connection(_in, _out)
+# 		current_cable.place_b(jack.global_position)
+# 		_create_connection(_in, _out)
