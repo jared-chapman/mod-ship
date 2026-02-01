@@ -20,8 +20,8 @@ height = 10.0
 [node name="DynamicCable" type="Node2D"]
 script = ExtResource("1_aorqe")
 number_of_segments = 7
-segment_length_in_pixels = 20
-segment_goal_mass = 0.72
+total_length_in_pixels = 400
+segment_goal_mass = 1.0
 col = Color(0, 0.096936174, 1.353256, 1)
 
 [node name="EndA" type="RigidBody2D" parent="."]

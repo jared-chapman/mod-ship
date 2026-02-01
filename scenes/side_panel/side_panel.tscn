@@ -1,88 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://11ww35fhmmjf"]
+[gd_scene load_steps=3 format=3 uid="uid://11ww35fhmmjf"]
 
 [ext_resource type="Script" uid="uid://clo5k438rdakb" path="res://scenes/side_panel/side_panel.gd" id="1_rn45t"]
 [ext_resource type="PackedScene" uid="uid://lfenjwd27ney" path="res://scenes/rack_sidebar/rack_sidebar.tscn" id="2_fp1bc"]
-[ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="3_yokaq"]
-[ext_resource type="PackedScene" uid="uid://b8derjjy0tsxb" path="res://scenes/module/module_components/knobs/knob_small/knob-small.tscn" id="4_g5e8c"]
-
-[sub_resource type="GDScript" id="GDScript_a80q2"]
-script/source = "extends Node2D
-
-@export var module: PackedScene
-@export var test_with_default = true
-var module_instance
-@export var module_width_hp = 4
-
-@export var placing: bool = false
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print(\"ready\")
-	if test_with_default and not module:
-		print(\"setting module\")
-		module = load(\"res://scenes/module-sidebar/Modules/Atten-1.tscn\")
-	
-	if module:
-		print(\"instantiating\")
-		print(module)
-		module_instance = module.instantiate()
-		add_child(module_instance)
-		module_width_hp = module_instance.width_hp || 0
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_4wd5t"]
-script/source = "extends Node2D
-@export var width_hp = 4
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
-[sub_resource type="PackedScene" id="PackedScene_6boys"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Atten1", "script", "Node2D", "Sprite2D", "scale", "texture", "centered", "region_enabled", "region_rect", "a1", "z_index", "position", "a2", "a3", "Knob"),
-"node_count": 6,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 5, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 0, 0, 0, 2147483647, 9, 6, 2, 10, 7, 11, 8, 0, 0, 0, 2147483647, 12, 6, 2, 10, 7, 11, 9, 0, 0, 0, 2147483647, 13, 6, 2, 10, 7, 11, 10, 0, 0, 0, 2147483647, 14, 6, 1, 11, 11, 0),
-"variants": [SubResource("GDScript_4wd5t"), Vector2(6, 6), ExtResource("3_yokaq"), false, true, Rect2(47.96437, -0.02407217, 32.025314, 64.034325), ExtResource("4_g5e8c"), 1, Vector2(93, 135), Vector2(93, 225), Vector2(94, 315), Vector2(175, 59)],
-"version": 3
-}
-
-[sub_resource type="PackedScene" id="PackedScene_4semr"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("ModuleSidebar", "Node2D", "script", "module"),
-"node_count": 1,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0),
-"variants": [SubResource("GDScript_a80q2"), SubResource("PackedScene_6boys")],
-"version": 3
-}
 
 [node name="SidePanel" type="Node2D"]
 script = ExtResource("1_rn45t")
+cable_segment_goal_mass = 0.855
 
-[node name="RackTemplate" parent="." groups=["RacksSidebar"] instance=ExtResource("2_fp1bc")]
+[node name="RackTemplate" parent="." instance=ExtResource("2_fp1bc")]
 position = Vector2(14, 31)
-default_test_module = SubResource("PackedScene_4semr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_as_relative = false
@@ -102,10 +28,9 @@ mouse_filter = 2
 
 [node name="TopRack" type="Node2D" parent="VBoxContainer"]
 
-[node name="MainRack" parent="VBoxContainer/TopRack" groups=["RacksSidebar"] instance=ExtResource("2_fp1bc")]
+[node name="MainRack" parent="VBoxContainer/TopRack" instance=ExtResource("2_fp1bc")]
 position = Vector2(14, 31)
 frozen = false
-default_test_module = SubResource("PackedScene_4semr")
 
 [node name="BottomRack" type="Node2D" parent="VBoxContainer" groups=["RacksSidebar"]]
 z_index = -9

@@ -41,6 +41,16 @@ var CableScene := preload("res://scenes/DynamicCable/DynamicCable.tscn")
 var current_cable: Node = null
 var cables: Array = []
 
+@export var number_of_segments: int = 7;
+@export var total_cable_length_in_pixels: int = 500;
+@export var min_cable_length_in_pixels: int = 100;
+@export var max_cable_length_in_pixels: int = 800
+@export var cable_resize_amount: int = 50;
+@export var cable_segment_goal_mass: float = 5.0;
+@export var cable_col := Color(0, 0, 1, 1)
+var ATTACH_LENGTH_BUFFER = 75
+
+
 func _ready():
 	# for now, always add the top rack to all_racks
 	all_racks_sidebar.append(top_rack)
@@ -54,6 +64,12 @@ func _ready():
 		all_racks_sidebar.append(related_rack_sidebar)
 		related_rack_sidebar.mouse_entered_rack.connect(_set_mouse_over_rack)
 		related_rack_sidebar.mouse_exited_rack.connect(_remove_mouse_over_rack)
+
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, ATTACH_LENGTH_BUFFER, Color.RED)
+
+func _process(_delta) -> void:
+	queue_redraw()
 
 
 func _set_mouse_over_rack(_rack):
@@ -77,6 +93,14 @@ func _input(event):
 		_module_placement()
 	elif event.is_action_pressed("left_click") and placing_module_instance:
 		_place_module()
+	elif event.is_action_pressed('Q'):
+		print("make a shorter cable")
+		# trigger_cable_resize.emit(-1)
+		_resize_cable(-1)
+	elif event.is_action_pressed('E'):
+		print("make a longer cable")
+		# trigger_cable_resize.emit(1)
+		_resize_cable(1)
 #endregion
 
 #region module
@@ -277,9 +301,24 @@ func _destroy_current_cable() -> void:
 
 
 func _create_new_cable() -> void:
+	print('trying', total_cable_length_in_pixels)
 	current_cable = CableScene.instantiate()
+	current_cable.number_of_segments = number_of_segments
+	current_cable.total_length_in_pixels = total_cable_length_in_pixels
+	current_cable.min_length_in_pixels = min_cable_length_in_pixels
+	current_cable.max_length_in_pixels = max_cable_length_in_pixels
+	current_cable.resize_amount = cable_resize_amount
+	current_cable.segment_goal_mass = cable_segment_goal_mass
+	current_cable.col = cable_col
 	add_child(current_cable)
-
+ 
+func _resize_cable(direction: int):
+	print('resize', direction * cable_resize_amount, ' : ', total_cable_length_in_pixels + (direction * cable_resize_amount))
+	var new_length = total_cable_length_in_pixels + (direction * cable_resize_amount)
+	if new_length > min_cable_length_in_pixels and new_length < max_cable_length_in_pixels:
+		_destroy_current_cable()
+		total_cable_length_in_pixels = new_length
+		_create_new_cable()
 
 func _on_jack_clicked(jack) -> void:
 	######################################################
@@ -315,7 +354,8 @@ func _on_jack_clicked(jack) -> void:
 		#             Valid type but too far              #
 		#              Print error (for now)              #
 		###################################################
-		if _candidate_jack_connection.global_position.distance_to(jack.global_position) > current_cable.total_length_in_pixels * CABLE_SCALE:
+		
+		if _candidate_jack_connection.global_position.distance_to(jack.global_position) + ATTACH_LENGTH_BUFFER > current_cable.total_length_in_pixels:
 			print("too far")
 			return
 

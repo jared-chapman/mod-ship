@@ -1,84 +1,80 @@
 extends Node2D
 
-@export var number_of_segments: int = 1000;
-@export var total_length_in_pixels: int = 140;
-@export var segment_length_in_pixels: int = 50;
-@export var max_length_in_pixels: int = 400;
-@export var segment_goal_mass: float = 5.0;
-@export var col := Color(1, 1, 1, 1)
+var state: String = 'placing_a'
 
-const GLOBAL_SCALE = 3
+
+var number_of_segments: int = 7;
+var total_length_in_pixels;
+var min_length_in_pixels: int = 100;
+var max_length_in_pixels: int = 800
+var resize_amount: int = 50;
+var segment_goal_mass: float = 5.0;
+var col := Color(1, 1, 1, 1)
+
+
+
 var segments = []
 var joints = []
 
-var state: String = 'placing_a'
-
 @onready var end_a := $EndA
 @onready var end_b := $EndB
-# when placing a cable, first end_a will be at the mouse and end_b will be dangling (figure this out)
-# then when first end is placed, second end will be mouse
+@onready var segment_node = $Segment
+@onready var joint_node = $Joint
+
+
 var _end_a_position: Vector2 = Vector2(0, 0)
 var _end_b_position: Vector2 = Vector2(0, 0)
 
+var line_points = []
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var segment_node = $Segment
-	var joint_node = $Joint
-
-	_build_cable(segment_node, joint_node, end_a, end_b)
-
-	end_a.parent_cable = self
-	end_b.parent_cable = self
-
-	end_a.base_segment_length = segment_length_in_pixels
-	end_b.base_segment_length = segment_length_in_pixels
-
-	end_a.number_of_segments = number_of_segments
-	end_b.number_of_segments = number_of_segments
-
-	end_a.segments = segments
-	end_b.segments = segments
-
-	end_a.joints = joints
-	end_b.joints = joints
-
-	end_a.follow_mouse = true
-	end_b.follow_mouse = false
-
-	# end_a.max_length = max_length_in_pixels
-	# end_b.max_length = max_length_in_pixels
-	end_a.parent_scale = GLOBAL_SCALE
-	end_b.parent_scale = GLOBAL_SCALE
-
-	# end_a.other_end = end_b
-	end_b.other_end = end_a
+	print('creating cable of length', total_length_in_pixels)
+	_build_cable()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	_update_end_rotations()
+	_draw_cable()
 
 	# draw line through segments
-	var points = [$EndA.position]
+	# if segments.size() == 0 or not end_a or not end_b:
+	# 	return
+	# var points = [end_a.position]
+	# for s in segments:
+	# 	points.append(s.position)
+	# points.append(end_b.position)
+	# $Line2D.points = catmull_rom_spline(points, 10, false)
+
+
+func _unhandled_input(event) -> void:
+	if state == "placing_a":
+		if event.is_action_pressed('Q'):
+			print("make a shorter cable")
+			# _resize_cable(-resize_amount)
+		elif event.is_action_pressed('E'):
+			print("make a longer cable")
+			# _resize_cable(resize_amount)
+
+func _draw_cable():
+	if segments.size() == 0 or not end_a or not end_b:
+		return
+	var points = [end_a.position]
 	for s in segments:
 		points.append(s.position)
-	points.append($EndB.position)
+	points.append(end_b.position)
 	$Line2D.points = catmull_rom_spline(points, 10, false)
 
 
-
-
-func _build_cable(segment, joint, endA, endB):
-
+func _build_cable():
+	@warning_ignore("integer_division")
+	var segment_length_in_pixels: int = total_length_in_pixels / number_of_segments
 	# modify segment so copies inherit scale, etc.
 
 	# set scale
-	var starting_height = segment.get_node("Sprite2D").get_rect().size.y
+	var starting_height = segment_node.get_node("Sprite2D").get_rect().size.y
 	var _scale = segment_length_in_pixels / starting_height
-	segment.scale = Vector2(1, _scale)
-	segment.mass = segment_goal_mass / number_of_segments
+	segment_node.scale = Vector2(1, _scale)
+	segment_node.mass = segment_goal_mass / number_of_segments
 	print({
 		'segment_length_in_pixels': segment_length_in_pixels,
 		'starting_height': starting_height,
@@ -89,30 +85,27 @@ func _build_cable(segment, joint, endA, endB):
 	var mouse_pos = get_global_mouse_position()
 
 	# what the next joint will connect to
-	var prev_segment = endA
-	var prev_v_position = mouse_pos.y - (segment_length_in_pixels * GLOBAL_SCALE)
+	var prev_segment = end_a
+	var prev_v_position = mouse_pos.y - (segment_length_in_pixels)
 
 	# place EndA
-	$EndA.position = mouse_pos
+	end_a.position = mouse_pos
 
+	# place rest of segments and joints
 	for s in range(number_of_segments):
-		var seg_copy = segment.duplicate()
-		var joint_copy = joint.duplicate()
+		var seg_copy = segment_node.duplicate()
+		var joint_copy   = joint_node.duplicate()
 
-		
 		# place segment
-		var seg_v_pos = prev_v_position + (segment_length_in_pixels * GLOBAL_SCALE)
+		var seg_v_pos = prev_v_position + segment_length_in_pixels
 		seg_copy.position = Vector2(mouse_pos.x, seg_v_pos)
 		prev_v_position = seg_v_pos
 
 		# place joint
-		# var joint_v_pos = s * (segment_length_in_pixels * GLOBAL_SCALE) - (nudge * s)
-		# joint_copy.position = Vector2(0, joint_v_pos)
 		joint_copy.position = Vector2(mouse_pos.x, seg_v_pos)
 		
 		add_child(seg_copy)
 		add_child(joint_copy)
-		# segments.append(seg_v_pos)
 		segments.append(seg_copy)
 		joints.append(joint_copy)
 
@@ -125,26 +118,56 @@ func _build_cable(segment, joint, endA, endB):
 
 	# place EndB after last segment
 	var end_v_position = prev_v_position
-	$EndB.position = Vector2(mouse_pos.x, end_v_position)
+	print('prev_v_position', prev_v_position)
+	end_b.position = Vector2(mouse_pos.x, end_v_position)
 
 	# create one more joint to attach EndB to last segment
-	var last_joint = joint.duplicate()
+	var last_joint = joint_node.duplicate()
 	last_joint.position = Vector2(mouse_pos.x, end_v_position)
 	add_child(last_joint)
+	joints.append(last_joint)
 	last_joint.node_a = prev_segment.get_path()
-	last_joint.node_b = $EndB.get_path()
+	last_joint.node_b = end_b.get_path()
 
 	# delete initial segment and joint
-	$Segment.queue_free()
-	$Joint.queue_free()
+	# $Segment.queue_free()	side_panel_scene.trigger_cable_resize.connect(_resize_cable)
 
-	# $EndA.get_node("Unplugged").modulate = col
-	# $EndA.get_node("Plugged").modulate = col
-	# $EndB.get_node("Unplugged").modulate = col
-	# $EndB.get_node("Plugged").modulate = col
-	# $Line2D.modulate = col
+
+	# give the ends some information about the cable to access it more easily
+	end_a.total_length_in_pixels = total_length_in_pixels
+	end_b.total_length_in_pixels = total_length_in_pixels
+
+	end_a.follow_mouse = true
+	end_b.follow_mouse = false
+
+	end_b.other_end = end_a
+
 	_update_colors(col)
 
+# func _resize_cable(direction: int):
+# 	if state != 'placing_a': return
+# 	print('resize', direction * resize_amount, ' : ', total_length_in_pixels + (direction * resize_amount))
+# 	var new_length = total_length_in_pixels + (direction * resize_amount)
+# 	if new_length > min_length_in_pixels and new_length < max_length_in_pixels:
+
+# 		# destroy current cable
+# 		# end_a.queue_free()
+# 		# end_b.queue_free()
+# 		for segment in segments:
+# 			segment.queue_free()
+# 		for joint in joints:
+# 			joint.queue_free()
+# 		segments = []
+# 		joints = []
+
+# 		# end_a = $EndA
+# 		# end_b = $EndB
+
+# 		# update length and create new cable
+# 		total_length_in_pixels = new_length
+# 		_build_cable()
+
+		
 
 func _update_colors(c = col) -> void:
 	$EndA.get_node("Unplugged").modulate = c
@@ -155,7 +178,7 @@ func _update_colors(c = col) -> void:
 
 
 func _update_end_rotations() -> void:
-	if segments.size() == 0:
+	if segments.size() == 0 or not end_a or not end_b:
 		return
 
 	# EndA faces first segment
@@ -170,7 +193,6 @@ func _update_end_rotations() -> void:
 	# $EndB.position = segments[-1].position
 
 func place_a(pos):
-	var DEBUG_JACK_OFFSET = Vector2(0, 0)
 	_end_a_position = pos
 	end_a.set_plugged(true)
 
@@ -181,8 +203,7 @@ func place_a(pos):
 	state = 'placing_b'
 
 func place_b(pos):
-	var DEBUG_JACK_OFFSET = Vector2(0, 0)
-	_end_b_position = pos + DEBUG_JACK_OFFSET
+	_end_b_position = pos
 	end_b.set_plugged(true)
 
 	end_b.stay_at_position = _end_b_position
