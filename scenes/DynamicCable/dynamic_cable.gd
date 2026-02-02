@@ -5,9 +5,6 @@ var state: String = 'placing_a'
 
 var number_of_segments: int = 7;
 var total_length_in_pixels;
-var min_length_in_pixels: int = 100;
-var max_length_in_pixels: int = 800
-var resize_amount: int = 50;
 var segment_goal_mass: float = 5.0;
 var col := Color(1, 1, 1, 1)
 
@@ -71,14 +68,16 @@ func _build_cable():
 	# modify segment so copies inherit scale, etc.
 
 	# set scale
-	var starting_height = segment_node.get_node("Sprite2D").get_rect().size.y
-	var _scale = segment_length_in_pixels / starting_height
-	segment_node.scale = Vector2(1, _scale)
+	# var starting_height = segment_node.get_node("Sprite2D").get_rect().size.y
+	# var _scale = segment_length_in_pixels / starting_height
+	# segment_node.scale = Vector2(1, _scale)
+
 	segment_node.mass = segment_goal_mass / number_of_segments
+	print('mass', segment_node.mass)
 	print({
 		'segment_length_in_pixels': segment_length_in_pixels,
-		'starting_height': starting_height,
-		'_scale': _scale,
+		# 'starting_height': starting_height,
+		# '_scale': _scale,
 	})
 
 	# offset by mouse position
@@ -117,7 +116,7 @@ func _build_cable():
 		prev_segment = seg_copy
 
 	# place EndB after last segment
-	var end_v_position = prev_v_position
+	var end_v_position = prev_v_position 
 	print('prev_v_position', prev_v_position)
 	end_b.position = Vector2(mouse_pos.x, end_v_position)
 
@@ -143,29 +142,6 @@ func _build_cable():
 	end_b.other_end = end_a
 
 	_update_colors(col)
-
-# func _resize_cable(direction: int):
-# 	if state != 'placing_a': return
-# 	print('resize', direction * resize_amount, ' : ', total_length_in_pixels + (direction * resize_amount))
-# 	var new_length = total_length_in_pixels + (direction * resize_amount)
-# 	if new_length > min_length_in_pixels and new_length < max_length_in_pixels:
-
-# 		# destroy current cable
-# 		# end_a.queue_free()
-# 		# end_b.queue_free()
-# 		for segment in segments:
-# 			segment.queue_free()
-# 		for joint in joints:
-# 			joint.queue_free()
-# 		segments = []
-# 		joints = []
-
-# 		# end_a = $EndA
-# 		# end_b = $EndB
-
-# 		# update length and create new cable
-# 		total_length_in_pixels = new_length
-# 		_build_cable()
 
 		
 

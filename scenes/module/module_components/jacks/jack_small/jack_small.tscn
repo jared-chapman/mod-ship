@@ -4,23 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="2_k36sd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spyrc"]
-size = Vector2(29.5, 30.5)
+size = Vector2(6, 6)
 
 [node name="JackSmall" type="Node2D" node_paths=PackedStringArray("debug_label")]
 script = ExtResource("1_7gwdl")
 debug_label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 8.0
 offset_top = -38.0
-offset_right = 48.0
+offset_right = 38.0
 offset_bottom = -15.0
 text = "test"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.25, -0.25)
 shape = SubResource("RectangleShape2D_spyrc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

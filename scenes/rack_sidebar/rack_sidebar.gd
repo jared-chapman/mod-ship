@@ -3,7 +3,7 @@ extends Node2D
 
 var is_main_rack = true
 
-var ONE_HP_IN_PIXELS: int = 12 
+var ONE_HP_IN_PIXELS: int = 2
 var ANCHOR_POINTS_PER_HP: int = 4
 var temp_unit_total = 79
 

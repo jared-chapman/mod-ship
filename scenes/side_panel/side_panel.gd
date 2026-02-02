@@ -4,11 +4,11 @@ var debug := true
 
 @export var rack_sidebar_scene := preload("res://scenes/rack_sidebar/rack_sidebar.tscn")
 
-@onready var top_rack = $VBoxContainer/TopRack/MainRack
-@onready var bottom_rack = $VBoxContainer/BottomRack
+@onready var top_rack = $TopRackPosition/MainRack
+@onready var bottom_rack_position = $BottomRackPosition
 
 # sizing
-var ONE_HP_IN_PIXELS: int = 12 
+var ONE_HP_IN_PIXELS: int = 2 
 var ANCHOR_POINTS_PER_HP: int = 4
 var temp_unit_total = 79
 
@@ -42,10 +42,10 @@ var current_cable: Node = null
 var cables: Array = []
 
 @export var number_of_segments: int = 7;
-@export var total_cable_length_in_pixels: int = 500;
-@export var min_cable_length_in_pixels: int = 100;
-@export var max_cable_length_in_pixels: int = 800
-@export var cable_resize_amount: int = 50;
+@export var total_cable_length_in_pixels: int = 100;
+@export var min_cable_length_in_pixels: int = 10;
+@export var max_cable_length_in_pixels: int = 200
+@export var cable_resize_amount: int = 10;
 @export var cable_segment_goal_mass: float = 5.0;
 @export var cable_col := Color(0, 0, 1, 1)
 var ATTACH_LENGTH_BUFFER = 75
@@ -230,9 +230,9 @@ func get_all_anchor_points(width_hp: int) -> Array:
 ## Handles instantiating rack_sidebars and attaching them to the world-level racks
 func _spawn_rack_sidebar_and_attack_to_rack(rack):
 	var rack_instance = rack_sidebar_scene.instantiate()
-	self.add_child(rack_instance)
+	bottom_rack_position.add_child(rack_instance)
 	rack_instance.related_world_rack = rack
-	rack_instance.position = bottom_rack.position
+	# rack_instance.position = bottom_rack.position
 	rack_instance.is_main_rack = false
 	rack_instance.set_frozen(true)
 	return rack_instance
@@ -285,8 +285,6 @@ func get_parent_in_group(_node, _group_name):
 #               Cable Management               *
 ################################################
 var _candidate_jack_connection = null
-var CABLE_SCALE = 3.0
-
 
 func _handle_initiate_cable_placement() -> void:
 	if current_cable:
@@ -305,9 +303,6 @@ func _create_new_cable() -> void:
 	current_cable = CableScene.instantiate()
 	current_cable.number_of_segments = number_of_segments
 	current_cable.total_length_in_pixels = total_cable_length_in_pixels
-	current_cable.min_length_in_pixels = min_cable_length_in_pixels
-	current_cable.max_length_in_pixels = max_cable_length_in_pixels
-	current_cable.resize_amount = cable_resize_amount
 	current_cable.segment_goal_mass = cable_segment_goal_mass
 	current_cable.col = cable_col
 	add_child(current_cable)

@@ -12,10 +12,18 @@ room_scene = ExtResource("2_0wfyh")
 
 [node name="Player" parent="." instance=ExtResource("4_jyhfs")]
 
-[node name="RacksCanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="WorldCamera" type="Camera2D" parent="Player"]
+zoom = Vector2(6.5, 6.5)
+
+[node name="RacksCanvasLayer" type="Node2D" parent="."]
+position = Vector2(2293, -1030)
 
 [node name="SidePanel" parent="RacksCanvasLayer" instance=ExtResource("5_tbgi4")]
+position = Vector2(1, -1)
+scale = Vector2(1, 1)
+
+[node name="RackCamera" type="Camera2D" parent="RacksCanvasLayer/SidePanel"]
+position = Vector2(188, 112)
+zoom = Vector2(4.58, 4.58)
 
 [node name="ShipInterior" parent="." instance=ExtResource("5_tefeu")]
-position = Vector2(15.378845, 16.334747)

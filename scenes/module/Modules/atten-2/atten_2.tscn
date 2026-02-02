@@ -6,48 +6,51 @@
 [ext_resource type="PackedScene" uid="uid://c2drth8vrehwo" path="res://scenes/module/module_components/jacks/jack_small/jack_small.tscn" id="4_28apd"]
 
 [node name="Atten-2" type="Node2D" groups=["Modules"]]
+z_index = 110
+z_as_relative = false
 script = ExtResource("1_r7xa3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(6, 6)
 texture = ExtResource("2_jstwq")
 centered = false
 region_enabled = true
 region_rect = Rect2(47.96437, -0.02407217, 32.025314, 64.034325)
 
 [node name="Inputs" type="Node2D" parent="."]
+z_index = 1
 
 [node name="Knob" parent="Inputs" instance=ExtResource("3_l8luo")]
-position = Vector2(92, 134)
+position = Vector2(15.355, 22.4)
 _name = "attenuator-1"
 
 [node name="Knob2" parent="Inputs" instance=ExtResource("3_l8luo")]
-position = Vector2(92, 224)
+position = Vector2(15.325, 37.375)
 _name = "attenuator-2"
 
 [node name="Knob3" parent="Inputs" instance=ExtResource("3_l8luo")]
-position = Vector2(92, 314)
+position = Vector2(15.325, 52.315)
 _name = "attenuator-3"
 
 [node name="JackSmall" parent="Inputs" instance=ExtResource("4_28apd")]
-position = Vector2(48, 96)
+position = Vector2(8, 16)
 is_input = true
 
 [node name="JackSmall2" parent="Inputs" instance=ExtResource("4_28apd")]
-position = Vector2(48, 186)
+position = Vector2(8, 31)
 is_input = true
 
 [node name="JackSmall3" parent="Inputs" instance=ExtResource("4_28apd")]
-position = Vector2(48, 277)
+position = Vector2(8, 46)
 is_input = true
 
 [node name="Outputs" type="Node2D" parent="."]
+z_index = 1
 
 [node name="JackSmall" parent="Outputs" instance=ExtResource("4_28apd")]
-position = Vector2(140, 96)
+position = Vector2(23, 16)
 
 [node name="JackSmall2" parent="Outputs" instance=ExtResource("4_28apd")]
-position = Vector2(139, 186)
+position = Vector2(23, 31)
 
 [node name="JackSmall3" parent="Outputs" instance=ExtResource("4_28apd")]
-position = Vector2(139, 276)
+position = Vector2(23, 46)

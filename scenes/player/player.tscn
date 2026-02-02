@@ -80,9 +80,6 @@ z_index = 1
 motion_mode = 1
 script = ExtResource("1_w6k1b")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3.26, 3.26)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_uroli")

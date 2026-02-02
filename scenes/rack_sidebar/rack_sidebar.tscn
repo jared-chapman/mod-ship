@@ -1,33 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://lfenjwd27ney"]
+[gd_scene load_steps=5 format=3 uid="uid://lfenjwd27ney"]
 
 [ext_resource type="Script" uid="uid://bctgb6hjxyyr" path="res://scenes/rack_sidebar/rack_sidebar.gd" id="1_2kcc7"]
-[ext_resource type="PackedScene" uid="uid://c6n0aos56fpoi" path="res://scenes/module/Modules/atten-2/atten_2.tscn" id="2_yt3va"]
-[ext_resource type="PackedScene" uid="uid://ckdbf3wb0mrnd" path="res://scenes/module/Modules/osc-2/osc_2.tscn" id="3_q0r8y"]
 [ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="4_fgpql"]
 [ext_resource type="Script" uid="uid://c3df45ita04tc" path="res://scripts/anchor_point.gd" id="5_soacb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3e6k"]
-size = Vector2(1070, 468)
+size = Vector2(172, 77)
 
 [node name="RackSidebar" type="Node2D" groups=["RacksSidebar"]]
 script = ExtResource("1_2kcc7")
-test_placing_module = ExtResource("2_yt3va")
-test_placing_module_2 = ExtResource("3_q0r8y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
-scale = Vector2(6, 6)
 texture = ExtResource("4_fgpql")
 centered = false
 region_enabled = true
 region_rect = Rect2(11.968408, 140.01558, 172.06883, 72.02046)
 
 [node name="TopLeftAnchor" type="Node2D" parent="."]
-position = Vector2(24, 24)
+position = Vector2(2, 4)
 script = ExtResource("5_soacb")
 
 [node name="Area2D" type="Area2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(506, 213)
+position = Vector2(83, 35.5)
 shape = SubResource("RectangleShape2D_i3e6k")

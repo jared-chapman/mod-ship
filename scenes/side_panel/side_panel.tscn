@@ -1,37 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://11ww35fhmmjf"]
+[gd_scene load_steps=4 format=3 uid="uid://11ww35fhmmjf"]
 
 [ext_resource type="Script" uid="uid://clo5k438rdakb" path="res://scenes/side_panel/side_panel.gd" id="1_rn45t"]
 [ext_resource type="PackedScene" uid="uid://lfenjwd27ney" path="res://scenes/rack_sidebar/rack_sidebar.tscn" id="2_fp1bc"]
+[ext_resource type="Texture2D" uid="uid://dw6ux6pugcr5q" path="res://assets/SidePanelBackground.png" id="3_mkfdq"]
 
 [node name="SidePanel" type="Node2D"]
-script = ExtResource("1_rn45t")
-cable_segment_goal_mass = 0.855
-
-[node name="RackTemplate" parent="." instance=ExtResource("2_fp1bc")]
-position = Vector2(14, 31)
-
-[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 100
 z_as_relative = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1059.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.4, 0.34117648, 0.27450982, 1)
+scale = Vector2(6, 6)
+script = ExtResource("1_rn45t")
+min_cable_length_in_pixels = 20
+cable_segment_goal_mass = 0.25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
+[node name="TopRackPosition" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(8.833334, 11.833333)
+metadata/_edit_group_ = true
 
-[node name="TopRack" type="Node2D" parent="VBoxContainer"]
-
-[node name="MainRack" parent="VBoxContainer/TopRack" instance=ExtResource("2_fp1bc")]
-position = Vector2(14, 31)
+[node name="MainRack" parent="TopRackPosition" instance=ExtResource("2_fp1bc")]
 frozen = false
 
-[node name="BottomRack" type="Node2D" parent="VBoxContainer" groups=["RacksSidebar"]]
-z_index = -9
-position = Vector2(23, 521)
+[node name="BottomRackPosition" type="Node2D" parent="." groups=["RacksSidebar"]]
+z_index = 1
+position = Vector2(8.833, 98)
+metadata/_edit_group_ = true
+
+[node name="SidePanelBackground" type="Sprite2D" parent="."]
+position = Vector2(264.33334, 188.66667)
+scale = Vector2(2.116862, 1.4876302)
+texture = ExtResource("3_mkfdq")
+metadata/_edit_lock_ = true

@@ -8,69 +8,59 @@
 [ext_resource type="Texture2D" uid="uid://du62hrxlbh3gi" path="res://assets/jack-v1-link.png" id="6_cfabv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wu4k"]
-size = Vector2(36.083332, 47.833332)
+size = Vector2(6, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2ngm"]
-size = Vector2(36, 48)
+size = Vector2(6, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3e0aj"]
 radius = 5.0
 height = 10.0
 
 [node name="DynamicCable" type="Node2D"]
+z_index = 120
+z_as_relative = false
 script = ExtResource("1_aorqe")
-number_of_segments = 7
-total_length_in_pixels = 400
-segment_goal_mass = 1.0
-col = Color(0, 0.096936174, 1.353256, 1)
 
 [node name="EndA" type="RigidBody2D" parent="."]
-z_index = 15
-z_as_relative = false
+position = Vector2(0, 1)
 collision_layer = 256
-mass = 1.248
 linear_damp = 5.456
 angular_damp = 5.189
 script = ExtResource("2_r5dqr")
 metadata/_edit_group_ = true
 
 [node name="Unplugged" type="Sprite2D" parent="EndA"]
-position = Vector2(0, -37)
-scale = Vector2(6, 6)
+position = Vector2(0, -7)
 texture = ExtResource("3_aggbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndA"]
-position = Vector2(0, -31)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_8wu4k")
 
 [node name="Plugged" type="Sprite2D" parent="EndA"]
 position = Vector2(0, -1)
-scale = Vector2(6, 6)
 texture = ExtResource("4_533e5")
 
 [node name="EndB" type="RigidBody2D" parent="."]
-z_index = 15
-z_as_relative = false
-position = Vector2(59, 0)
+position = Vector2(60, 0)
 collision_layer = 256
-mass = 0.962
+mass = 0.096
 linear_damp = 5.456
 angular_damp = 5.189
 script = ExtResource("2_r5dqr")
 metadata/_edit_group_ = true
 
 [node name="Unplugged" type="Sprite2D" parent="EndB"]
-position = Vector2(-2.2737368e-13, 38)
+position = Vector2(-2.2737368e-13, 6)
 rotation = -3.1415925
-scale = Vector2(6, 6)
 texture = ExtResource("3_aggbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndB"]
-position = Vector2(0, 32)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_k2ngm")
 
 [node name="Plugged" type="Sprite2D" parent="EndB"]
-scale = Vector2(6, 6)
 texture = ExtResource("4_533e5")
 
 [node name="Segment" type="RigidBody2D" parent="."]
@@ -102,3 +92,4 @@ motor_target_velocity = -3.4906585
 show_behind_parent = true
 z_index = 10
 points = PackedVector2Array(85, 97)
+width = 2.0
