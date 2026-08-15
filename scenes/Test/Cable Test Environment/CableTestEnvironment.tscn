@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnq1iyiq321g8"]
+
+[ext_resource type="PackedScene" uid="uid://bxa6rju1tcfy5" path="res://scenes/CableManager/CableManager.tscn" id="1_ain41"]
+[ext_resource type="PackedScene" uid="uid://c2drth8vrehwo" path="res://scenes/module/module_components/jacks/jack_small/jack_small.tscn" id="2_tj6qn"]
+[ext_resource type="Texture2D" uid="uid://bgfnmr8kndowl" path="res://assets/sheet-1.png" id="3_tj6qn"]
+
+[node name="CableTestEnvironment" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1641, 928)
+zoom = Vector2(5.245, 5.245)
+
+[node name="CableManager" parent="." instance=ExtResource("1_ain41")]
+
+[node name="TestJack1" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1564, 908)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack1"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack1"]
+offset_left = -19.0
+offset_top = -15.0
+offset_right = 21.0
+offset_bottom = 8.0
+text = "1"
+
+[node name="TestJack2" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1697, 906)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack2"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack2"]
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 7.0
+text = "2"
+
+[node name="TestJack3" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1587, 955)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack3"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack3"]
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 7.0
+text = "3"
+
+[node name="TestJack4" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1633, 887)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack4"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack4"]
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 7.0
+text = "4"
+
+[node name="TestJack5" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1701, 949)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack5"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack5"]
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 7.0
+text = "5"

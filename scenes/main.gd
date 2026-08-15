@@ -1,6 +1,6 @@
 extends Node2D
 var debug := true
-
+# hello
 # @onready var room_container = $RoomContainer
 @onready var player = $Player
 # @onready var ui = $CanvasLayer/SidePanel

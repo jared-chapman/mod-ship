@@ -1,4 +1,4 @@
-extends Jack
+extends NewJack
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,9 +11,9 @@ func _process(delta: float) -> void:
 	super._process(delta)
 
 
-func _on_area_2d_mouse_entered() -> void:
-	set_is_over_jack(true)
+# func _on_area_2d_mouse_entered() -> void:
+# 	set_is_over_jack(true)
 
 
-func _on_area_2d_mouse_exited() -> void:
-	set_is_over_jack(false)
+# func _on_area_2d_mouse_exited() -> void:
+# 	set_is_over_jack(false)

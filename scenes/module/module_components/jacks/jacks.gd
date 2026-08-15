@@ -1,5 +1,5 @@
 extends Node
-class_name Jack
+class_name JackOld
 
 @export var value := 0.5
 @export var sig = {
@@ -26,7 +26,7 @@ signal input_value_changed(name: String, value: float)
 signal output_value_changed(name: String, value: float)
 signal input_signal_changed(name: String, value)
 signal output_signal_changed(name:String, value)
-signal jack_clicked(jack: Jack)
+signal jack_clicked(jack: JackOld)
 
 
 # Called when the node enters the scene tree for the first time.

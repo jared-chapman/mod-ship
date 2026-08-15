@@ -25,6 +25,7 @@ script = ExtResource("1_aorqe")
 [node name="EndA" type="RigidBody2D" parent="."]
 position = Vector2(0, 1)
 collision_layer = 256
+mass = 2.183
 linear_damp = 5.456
 angular_damp = 5.189
 script = ExtResource("2_r5dqr")
@@ -45,7 +46,7 @@ texture = ExtResource("4_533e5")
 [node name="EndB" type="RigidBody2D" parent="."]
 position = Vector2(60, 0)
 collision_layer = 256
-mass = 0.096
+mass = 5.57
 linear_damp = 5.456
 angular_damp = 5.189
 script = ExtResource("2_r5dqr")

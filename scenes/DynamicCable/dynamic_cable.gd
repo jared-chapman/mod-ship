@@ -4,7 +4,7 @@ var state: String = 'placing_a'
 
 
 var number_of_segments: int = 7;
-var total_length_in_pixels;
+var total_length_in_pixels = 300;
 var segment_goal_mass: float = 5.0;
 var col := Color(1, 1, 1, 1)
 
@@ -43,14 +43,14 @@ func _process(_delta: float) -> void:
 	# $Line2D.points = catmull_rom_spline(points, 10, false)
 
 
-func _unhandled_input(event) -> void:
-	if state == "placing_a":
-		if event.is_action_pressed('Q'):
-			print("make a shorter cable")
-			# _resize_cable(-resize_amount)
-		elif event.is_action_pressed('E'):
-			print("make a longer cable")
-			# _resize_cable(resize_amount)
+# func _unhandled_input(event) -> void:
+# 	if state == "placing_a":
+# 		if event.is_action_pressed('Q'):
+# 			print("make a shorter cable")
+# 			# _resize_cable(-resize_amount)
+# 		elif event.is_action_pressed('E'):
+# 			print("make a longer cable")
+# 			# _resize_cable(resize_amount)
 
 func _draw_cable():
 	if segments.size() == 0 or not end_a or not end_b:
@@ -171,12 +171,12 @@ func _update_end_rotations() -> void:
 func place_a(pos):
 	_end_a_position = pos
 	end_a.set_plugged(true)
-
 	end_a.stay_at_position = _end_a_position
+
 	end_a.follow_mouse = false
 	end_b.follow_mouse = true
 
-	state = 'placing_b'
+	# state = 'placing_b'
 
 func place_b(pos):
 	_end_b_position = pos
@@ -186,7 +186,28 @@ func place_b(pos):
 	end_a.follow_mouse = false
 	end_b.follow_mouse = false
 	
-	state = 'placed'
+	# state = 'placed'
+
+func place(is_a, pos):
+	if is_a:
+		_end_a_position = pos
+		end_a.set_plugged(true)
+		end_a.stay_at_position = pos
+		end_a.follow_mouse = false
+	else:
+		_end_b_position = pos
+		end_b.set_plugged(true)
+		end_b.stay_at_position = pos
+		end_b.follow_mouse = false
+
+# "holds" an end
+func make_end_active(is_a):
+	if is_a:
+		end_a.follow_mouse = true
+		end_b.follow_mouse = false
+	else:
+		end_a.follow_mouse = false
+		end_b.follow_mouse = true
 
 # https://gist.github.com/JoelBesada/8cb4508dfbcd4e23f639476fd89b1952
 func catmull_rom_spline(

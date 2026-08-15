@@ -29,6 +29,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _integrate_forces(state):
+	pass
 
 	var target := Vector2.ZERO
 	var origin = state.transform.origin
@@ -41,7 +42,6 @@ func _integrate_forces(state):
 		else:
 			var other_pos = other_end.global_position
 			var distance_between_mouse_and_origin = other_pos.distance_to(mouse_pos)
-			print('distance to other end: ', distance_between_mouse_and_origin)
 
 			# Set a buffer so cable can't be stretched to max tension
 			var _stretch_buffer = 30
