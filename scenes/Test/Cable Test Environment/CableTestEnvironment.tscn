@@ -14,7 +14,7 @@ zoom = Vector2(5.245, 5.245)
 
 [node name="TestJack1" parent="." instance=ExtResource("2_tj6qn")]
 unique_name_in_owner = true
-position = Vector2(1564, 908)
+position = Vector2(1552, 883)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="TestJack1"]
@@ -31,7 +31,7 @@ text = "1"
 
 [node name="TestJack2" parent="." instance=ExtResource("2_tj6qn")]
 unique_name_in_owner = true
-position = Vector2(1697, 906)
+position = Vector2(1587, 885)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="TestJack2"]
@@ -46,9 +46,26 @@ offset_right = 21.0
 offset_bottom = 7.0
 text = "2"
 
+[node name="TestJack6" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1564, 937)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack6"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack6"]
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 7.0
+text = "6"
+
 [node name="TestJack3" parent="." instance=ExtResource("2_tj6qn")]
 unique_name_in_owner = true
-position = Vector2(1587, 955)
+position = Vector2(1625, 884)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="TestJack3"]
@@ -65,7 +82,7 @@ text = "3"
 
 [node name="TestJack4" parent="." instance=ExtResource("2_tj6qn")]
 unique_name_in_owner = true
-position = Vector2(1633, 887)
+position = Vector2(1716, 943)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="TestJack4"]
@@ -80,9 +97,26 @@ offset_right = 21.0
 offset_bottom = 7.0
 text = "4"
 
+[node name="TestJack8" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1616, 972)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack8"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack8"]
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 7.0
+text = "8"
+
 [node name="TestJack5" parent="." instance=ExtResource("2_tj6qn")]
 unique_name_in_owner = true
-position = Vector2(1701, 949)
+position = Vector2(1681, 967)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="TestJack5"]
@@ -96,3 +130,20 @@ offset_top = -16.0
 offset_right = 21.0
 offset_bottom = 7.0
 text = "5"
+
+[node name="TestJack7" parent="." instance=ExtResource("2_tj6qn")]
+unique_name_in_owner = true
+position = Vector2(1727, 884)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="TestJack7"]
+texture = ExtResource("3_tj6qn")
+region_enabled = true
+region_rect = Rect2(53, 43, 6, 6)
+
+[node name="Label2" type="Label" parent="TestJack7"]
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = 7.0
+text = "7"

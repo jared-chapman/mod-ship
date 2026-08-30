@@ -1,56 +1,65 @@
 extends Node2D
 
-var state: String = 'placing_a'
+enum State {
+	PLACING_INITIAL,
+	PLACING_SECONDARY,
+	PLACED
+}
 
+var _state: State
 
-var number_of_segments: int = 7;
-var total_length_in_pixels = 300;
-var segment_goal_mass: float = 5.0;
+# physical cable attributes
+var NUMBER_OF_SEGMENTS: int = 5
+var INITIAL_LENGTH_IN_PIXELS: int = 20
+var TOTAL_MASS: float = 2.0
+var STRETCH_SOFTNESS: float = 15.0
 var col := Color(1, 1, 1, 1)
-
 
 
 var segments = []
 var joints = []
 
+
 @onready var end_a := $EndA
 @onready var end_b := $EndB
 @onready var segment_node = $Segment
 @onready var joint_node = $Joint
+@onready var cable_data = {
+		'follow_accelleration': 6.0,
+		'snap_accelleration': 300.0,
+		'max_speed': 400.0,
+		'end_a': end_a,
+		'end_b': end_b,
+		'other_end': '',
+	}
 
-
-var _end_a_position: Vector2 = Vector2(0, 0)
-var _end_b_position: Vector2 = Vector2(0, 0)
-
-var line_points = []
 
 func _ready() -> void:
-	print('creating cable of length', total_length_in_pixels)
+	print('creating cable of length', INITIAL_LENGTH_IN_PIXELS)
 	_build_cable()
+	_state = State.PLACING_INITIAL
 
 
 func _process(_delta: float) -> void:
 	_update_end_rotations()
 	_draw_cable()
 
-	# draw line through segments
-	# if segments.size() == 0 or not end_a or not end_b:
-	# 	return
-	# var points = [end_a.position]
-	# for s in segments:
-	# 	points.append(s.position)
-	# points.append(end_b.position)
-	# $Line2D.points = catmull_rom_spline(points, 10, false)
 
+#region public state setters
+func set_state_placing_initial():
+	_state = State.PLACING_INITIAL
+	_set_allow_stretch(false)
+	pass
 
-# func _unhandled_input(event) -> void:
-# 	if state == "placing_a":
-# 		if event.is_action_pressed('Q'):
-# 			print("make a shorter cable")
-# 			# _resize_cable(-resize_amount)
-# 		elif event.is_action_pressed('E'):
-# 			print("make a longer cable")
-# 			# _resize_cable(resize_amount)
+func set_state_placing_secondary():
+	_state = State.PLACING_SECONDARY
+	_set_allow_stretch(true)
+	pass
+
+func set_state_placed():
+	_state = State.PLACED
+	pass
+#endregion
 
 func _draw_cable():
 	if segments.size() == 0 or not end_a or not end_b:
@@ -59,26 +68,22 @@ func _draw_cable():
 	for s in segments:
 		points.append(s.position)
 	points.append(end_b.position)
-	$Line2D.points = catmull_rom_spline(points, 10, false)
+	$Line2D.points = catmull_rom_spline(points, 500)
 
+func _set_allow_stretch(allow) -> void:
+	print('allow stretch ', allow)
+	if len(joints) == 0:
+		return
+	
+	for joint in joints:
+		joint.softness = STRETCH_SOFTNESS if allow else 0.0
 
 func _build_cable():
-	@warning_ignore("integer_division")
-	var segment_length_in_pixels: int = total_length_in_pixels / number_of_segments
+	var segment_length_in_pixels: int = int(INITIAL_LENGTH_IN_PIXELS / (NUMBER_OF_SEGMENTS * 1.0))
 	# modify segment so copies inherit scale, etc.
 
-	# set scale
-	# var starting_height = segment_node.get_node("Sprite2D").get_rect().size.y
-	# var _scale = segment_length_in_pixels / starting_height
-	# segment_node.scale = Vector2(1, _scale)
-
-	segment_node.mass = segment_goal_mass / number_of_segments
-	print('mass', segment_node.mass)
-	print({
-		'segment_length_in_pixels': segment_length_in_pixels,
-		# 'starting_height': starting_height,
-		# '_scale': _scale,
-	})
+	# set mass of each segment to it's portion (including both ends)
+	segment_node.mass = TOTAL_MASS / NUMBER_OF_SEGMENTS
 
 	# offset by mouse position
 	var mouse_pos = get_global_mouse_position()
@@ -91,7 +96,7 @@ func _build_cable():
 	end_a.position = mouse_pos
 
 	# place rest of segments and joints
-	for s in range(number_of_segments):
+	for s in range(NUMBER_OF_SEGMENTS):
 		var seg_copy = segment_node.duplicate()
 		var joint_copy   = joint_node.duplicate()
 
@@ -116,7 +121,7 @@ func _build_cable():
 		prev_segment = seg_copy
 
 	# place EndB after last segment
-	var end_v_position = prev_v_position 
+	var end_v_position = prev_v_position + segment_length_in_pixels
 	print('prev_v_position', prev_v_position)
 	end_b.position = Vector2(mouse_pos.x, end_v_position)
 
@@ -128,22 +133,21 @@ func _build_cable():
 	last_joint.node_a = prev_segment.get_path()
 	last_joint.node_b = end_b.get_path()
 
-	# delete initial segment and joint
-	# $Segment.queue_free()	side_panel_scene.trigger_cable_resize.connect(_resize_cable)
-
 
 	# give the ends some information about the cable to access it more easily
-	end_a.total_length_in_pixels = total_length_in_pixels
-	end_b.total_length_in_pixels = total_length_in_pixels
+	var cable_data_a = cable_data.duplicate(true)
+	var cable_data_b = cable_data.duplicate(true)
+	cable_data_a.other_end = end_b
+	cable_data_b.other_end = end_a
+	end_a.set_cable_data(cable_data_a)
+	end_b.set_cable_data(cable_data_b)
 
-	end_a.follow_mouse = true
-	end_b.follow_mouse = false
-
-	end_b.other_end = end_a
+	# set initial end states
+	end_a.set_state_follow_mouse()
+	end_b.set_state_hang()
 
 	_update_colors(col)
 
-		
 
 func _update_colors(c = col) -> void:
 	$EndA.get_node("Unplugged").modulate = c
@@ -159,55 +163,38 @@ func _update_end_rotations() -> void:
 
 	# EndA faces first segment
 	var dir_a = segments[0].global_transform.y.angle()
-	# if dir_a.length_squared() > 0.0001:
 	$EndA.rotation = dir_a - (PI/2)
-	# $EndA.position = segments[0].position
 
 	# # EndB faces last segment
-	var dir_b = segments[-2].global_transform.y.angle()
+	var dir_b = segments[-1].global_transform.y.angle()
 	$EndB.rotation = dir_b - (PI/2)
-	# $EndB.position = segments[-1].position
 
-func place_a(pos):
-	_end_a_position = pos
-	end_a.set_plugged(true)
-	end_a.stay_at_position = _end_a_position
 
-	end_a.follow_mouse = false
-	end_b.follow_mouse = true
+# snaps end to pos without connecting it
+func hover_at_position(is_a, pos):
+	var end = end_a if is_a else end_b
+	if !end.is_hovering() || pos != end.get_target():
+		end.set_state_initiate_hover(pos)
 
-	# state = 'placing_b'
 
-func place_b(pos):
-	_end_b_position = pos
-	end_b.set_plugged(true)
+# causes end to follow mouse
+func hold_end(is_a):
+	var end = end_a if is_a else end_b
+	if !end.is_following_mouse():
+		end.set_state_follow_mouse()
 
-	end_b.stay_at_position = _end_b_position
-	end_a.follow_mouse = false
-	end_b.follow_mouse = false
-	
-	# state = 'placed'
 
+# moves to position and creates connection
 func place(is_a, pos):
-	if is_a:
-		_end_a_position = pos
-		end_a.set_plugged(true)
-		end_a.stay_at_position = pos
-		end_a.follow_mouse = false
-	else:
-		_end_b_position = pos
-		end_b.set_plugged(true)
-		end_b.stay_at_position = pos
-		end_b.follow_mouse = false
+	var end = end_a if is_a else end_b
+	end.set_state_initiate_hard_lock(pos)
 
-# "holds" an end
-func make_end_active(is_a):
-	if is_a:
-		end_a.follow_mouse = true
-		end_b.follow_mouse = false
-	else:
-		end_a.follow_mouse = false
-		end_b.follow_mouse = true
+	if _state == State.PLACING_INITIAL:
+		set_state_placing_secondary()
+
+	if _state == State.PLACING_SECONDARY:
+		set_state_placed()
+
 
 # https://gist.github.com/JoelBesada/8cb4508dfbcd4e23f639476fd89b1952
 func catmull_rom_spline(

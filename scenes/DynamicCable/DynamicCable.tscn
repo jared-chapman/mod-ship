@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rudi1g5miopb"]
+[gd_scene load_steps=11 format=3 uid="uid://rudi1g5miopb"]
 
 [ext_resource type="Script" uid="uid://d2tyo0konj4x8" path="res://scenes/DynamicCable/dynamic_cable.gd" id="1_aorqe"]
 [ext_resource type="Script" uid="uid://cp6td2hmyfbv8" path="res://scripts/End.gd" id="2_r5dqr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dchb6ki8he1gv" path="res://assets/jack-v1-plugged.png" id="4_533e5"]
 [ext_resource type="Script" uid="uid://rwluaxl3ugnl" path="res://scenes/Cable/segment_1.gd" id="5_8tqng"]
 [ext_resource type="Texture2D" uid="uid://du62hrxlbh3gi" path="res://assets/jack-v1-link.png" id="6_cfabv"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://assets/icon.svg" id="7_r5dqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wu4k"]
 size = Vector2(6, 16)
@@ -13,9 +14,7 @@ size = Vector2(6, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2ngm"]
 size = Vector2(6, 16)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3e0aj"]
-radius = 5.0
-height = 10.0
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r5dqr"]
 
 [node name="DynamicCable" type="Node2D"]
 z_index = 120
@@ -25,7 +24,6 @@ script = ExtResource("1_aorqe")
 [node name="EndA" type="RigidBody2D" parent="."]
 position = Vector2(0, 1)
 collision_layer = 256
-mass = 2.183
 linear_damp = 5.456
 angular_damp = 5.189
 script = ExtResource("2_r5dqr")
@@ -46,7 +44,6 @@ texture = ExtResource("4_533e5")
 [node name="EndB" type="RigidBody2D" parent="."]
 position = Vector2(60, 0)
 collision_layer = 256
-mass = 5.57
 linear_damp = 5.456
 angular_damp = 5.189
 script = ExtResource("2_r5dqr")
@@ -65,29 +62,37 @@ shape = SubResource("RectangleShape2D_k2ngm")
 texture = ExtResource("4_533e5")
 
 [node name="Segment" type="RigidBody2D" parent="."]
-position = Vector2(-58, 14)
+position = Vector2(-75, 0)
+scale = Vector2(1.01, 1)
 collision_layer = 256
-mass = 0.729
 linear_damp = 5.456
 angular_damp = 5.189
 script = ExtResource("5_8tqng")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Segment"]
-shape = SubResource("CapsuleShape2D_3e0aj")
+shape = SubResource("SegmentShape2D_r5dqr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Segment"]
 visible = false
-position = Vector2(-24, 2.3841858e-07)
-scale = Vector2(3, 3)
+position = Vector2(-0.2, 0.05)
+scale = Vector2(0.63, 0.63)
 texture = ExtResource("6_cfabv")
 centered = false
+offset = Vector2(-1.75, 0)
+region_enabled = true
+region_rect = Rect2(6, 0, 4, 16)
 
 [node name="Joint" type="PinJoint2D" parent="."]
 position = Vector2(125, -15)
-bias = 0.9
-angular_limit_lower = 1.4835298
-angular_limit_upper = 1.6580628
-motor_target_velocity = -3.4906585
+bias = 0.312
+disable_collision = false
+angular_limit_lower = -1.0908308
+angular_limit_upper = 0.9442231
+
+[node name="Sprite2D" type="Sprite2D" parent="Joint"]
+visible = false
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("7_r5dqr")
 
 [node name="Line2D" type="Line2D" parent="."]
 show_behind_parent = true

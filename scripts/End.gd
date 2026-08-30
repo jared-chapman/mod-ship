@@ -1,78 +1,133 @@
 extends RigidBody2D
 
-@export var move_speed := 2200.0
-@export var follow_strength := 20.0
-@export var max_speed := 2200.0
+enum State {
+	FOLLOW_MOUSE,
+	HANG,
+	INITIATE_HOVER,
+	HOVER,
+	INITIATE_LOCK,
+	LOCK,
+}
+
+var _state: State
+var target := Vector2.ZERO
+var cable_data := {}
 
 
-# the other end of this cable
-var other_end
-
-# inherited on instantion from parent
-var total_length_in_pixels
-
-var follow_mouse := true
-var stay_at_position := Vector2.ZERO
-var floating := false
-# var target := Vector2.ZEROma
-
-
-var next_segment
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Plugged.visible = false;
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
-func _integrate_forces(state):
-	pass
 
-	var target := Vector2.ZERO
-	var origin = state.transform.origin
+#region public setters
+func set_cable_data(data):
+	cable_data = data
 
-	if follow_mouse:
-		var mouse_pos = get_global_mouse_position()
-		if not other_end:
-			target = mouse_pos
-			floating = false
-		else:
-			var other_pos = other_end.global_position
-			var distance_between_mouse_and_origin = other_pos.distance_to(mouse_pos)
+func set_state_follow_mouse():
+	_state = State.FOLLOW_MOUSE
 
-			# Set a buffer so cable can't be stretched to max tension
-			var _stretch_buffer = 30
-			var max_allowed_length = total_length_in_pixels - _stretch_buffer
+func set_state_hang():
+	_state = State.HANG
 
-			if distance_between_mouse_and_origin > max_allowed_length:
-				var direction = (mouse_pos - other_pos).normalized()
-				target = other_pos + direction * max_allowed_length
-				floating = true
-			else:
-				target = mouse_pos
-				floating = false
+func set_state_initiate_hover(pos):
+	# INITIATE_HOVER moves to HOVER when position is reached
+	_state = State.INITIATE_HOVER
+	target = pos
 
-		# use physics to place in correct spot
-		var desired_velocity = (target - state.transform.origin) * follow_strength
-		state.linear_velocity = desired_velocity.limit_length(max_speed)
-		state.angular_velocity = 0
+func set_state_initiate_hard_lock(pos):
+	# INITIATE_LOCK moves to LOCK when position is reached
+	_state = State.INITIATE_LOCK
+	target = pos
+#endregion
 
-	elif stay_at_position != Vector2.ZERO:
-		# force to lock to position
-		target = stay_at_position
-		state.transform.origin = target
-		state.linear_velocity =Vector2.ZERO
+#region public getters
+func is_following_mouse():
+	return _state == State.FOLLOW_MOUSE
 
-	else:
-		return
+func is_hovering():
+	return _state == State.INITIATE_HOVER || _state == State.HOVER
 
+func is_locked():
+	return _state == State.INITIATE_LOCK || _state == State.LOCK
 
+func get_target():
+	return target
+#endregion
 
-
-
-func set_plugged(plugged: bool) -> void:
+#region private setters
+func _set_plugged(plugged: bool) -> void:
 	$Plugged.visible = plugged
 	$Unplugged.visible = not plugged
+#endregion
+
+func _integrate_forces(physics_state):
+	var ps = physics_state
+	var pos = ps.transform.origin
+
+	match _state:
+		State.FOLLOW_MOUSE:
+			_handle_follow_mouse(pos, ps)
+		State.HANG:
+			_handle_hang(pos, ps)
+		State.INITIATE_HOVER:
+			_handle_initiate_hover(pos, ps)
+		State.HOVER:
+			_handle_hover(pos, ps)
+		State.INITIATE_LOCK:
+			_handle_initiate_lock(pos, ps)
+		State.LOCK:
+			_handle_lock(pos, ps)
+
+
+#region state handlers
+# Handles following mouse AND stretching if needed
+func _handle_follow_mouse(_pos, ps) -> void:
+	var mouse_pos = get_global_mouse_position()
+	_move(ps.transform.origin, mouse_pos, ps, cable_data.follow_accelleration)
+	
+
+func _handle_hang(_pos, _ps) -> void:
+	pass
+
+func _handle_initiate_hover(pos, ps) -> void:
+	if pos.distance_to(target) > 8:
+		_move(pos, target, ps, cable_data.follow_accelleration)
+	else:
+		_state = State.HOVER
+
+func _handle_hover(pos, ps) -> void:
+	# TODO - build hover logic
+	_hover_near_position(pos, target, 20, ps)
+
+func _handle_initiate_lock(pos, ps) -> void:
+	if pos.distance_to(target) > 20:
+		_move(pos, target, ps, cable_data.snap_accelleration)
+	else:
+		_state = State.LOCK
+
+func _handle_lock(_pos, ps) -> void:
+	ps.linear_velocity = Vector2.ZERO
+	var new_transform = ps.transform
+	new_transform.origin = target
+
+	ps.transform = new_transform
+	ps.angular_velocity = 0
+
+	_set_plugged(true)
+#endregion
+
+
+func _hover_near_position(pos, tar, _range, ps):
+	# Placeholder - currently just moves to target still
+	_move(pos, tar, ps, cable_data.follow_accelleration)
+		
+
+func _move(pos, tar, ps, accelleration) -> void:
+	# use physics to move toward correct spot
+	var desired_velocity = (tar - pos) * accelleration
+	var end_velocity = desired_velocity.limit_length(cable_data.max_speed)
+
+	ps.linear_velocity = end_velocity
+	ps.angular_velocity = 0

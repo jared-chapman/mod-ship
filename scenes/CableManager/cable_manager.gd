@@ -43,7 +43,7 @@ func _ready() -> void:
 			},
 			{
 				"scene": %TestJack3,
-				"is_input": true,
+				"is_input": false,
 				"connected_to": null,
 			},
 			{
@@ -53,6 +53,21 @@ func _ready() -> void:
 			},
 			{
 				"scene": %TestJack5,
+				"is_input": false,
+				"connected_to": null,
+			},
+			{
+				"scene": %TestJack6,
+				"is_input": true,
+				"connected_to": null,
+			},
+			{
+				"scene": %TestJack7,
+				"is_input": false,
+				"connected_to": null,
+			},
+			{
+				"scene": %TestJack8,
 				"is_input": true,
 				"connected_to": null,
 			},
@@ -62,33 +77,44 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if debug: queue_redraw()
 	if selection_method == 'mouse':
 		_focus_nearest_allowed_jack_to_mouse()
 
 
-
-
-#region handle inputs
-# TODO This should be moved to a main controller which should hit these functions
-# when in module view
-func _unhandled_input(event) -> void:
-	# if debug: _log_keypress(event)
-	if event.is_action_pressed('Primary'):     _handle_primary()
-	if event.is_action_pressed('Secondary'):   _handle_secondary()
-	if event.is_action_pressed('Up'):          _handle_direction('Up')
-	if event.is_action_pressed('Down'):        _handle_direction('Down')
-	if event.is_action_pressed('Left'):        _handle_direction('Left')
-	if event.is_action_pressed('Right'):       _handle_direction('Right')
-	if event.is_action_pressed('Scroll_Up'):   _handle_scroll('Up')
-	if event.is_action_pressed('Scroll_Down'): _handle_scroll('Down')
-	if event.is_action_pressed('Test_Cable'):  _handle_test_cable()
+#region debug functions
 
 func _log_keypress(event) -> void:
 	for e in used_events:
 		if event.is_action_pressed(e):
 			print(e, ' pressed')
+
+func _draw():
+	if debug && max_mouse_radius_in_pixels:
+		var mouse_pos = get_global_mouse_position()
+		draw_arc(mouse_pos, max_mouse_radius_in_pixels, 0, TAU, 64, Color.GREEN, 0.1, true)
+
+#endregion
+
+
+#region handle inputs
+
+# TODO This should be moved to a main controller which should hit these functions
+# when in module view
+func _unhandled_input(event) -> void:
+	# if debug: _log_keypress(event)
+	if event.is_action_pressed('Primary'): _handle_primary()
+	if event.is_action_pressed('Secondary'): _handle_secondary()
+	if event.is_action_pressed('Up'): _handle_direction('Up')
+	if event.is_action_pressed('Down'): _handle_direction('Down')
+	if event.is_action_pressed('Left'): _handle_direction('Left')
+	if event.is_action_pressed('Right'): _handle_direction('Right')
+	if event.is_action_pressed('Scroll_Up'): _handle_scroll('Up')
+	if event.is_action_pressed('Scroll_Down'): _handle_scroll('Down')
+	if event.is_action_pressed('Test_Cable'): _create_cable()
+
+
 
 
 func _handle_primary() -> void:
@@ -97,13 +123,13 @@ func _handle_primary() -> void:
 func _handle_secondary() -> void:
 	pass
 
-func _handle_direction(dir) -> void:
+func _handle_direction(_dir) -> void:
 	pass
 
-func _handle_scroll(dir) -> void:
+func _handle_scroll(_dir) -> void:
 	pass
 
-func _handle_test_cable() -> void:
+func _create_cable() -> void:
 	var cable = cable_scene.instantiate()
 	add_child(cable)
 	active_cable = {
@@ -117,11 +143,8 @@ func _handle_test_cable() -> void:
 
 #endregion
 
+
 #region handle jack focus
-func _draw():
-	if debug && max_mouse_radius_in_pixels:
-		var mouse_pos = get_global_mouse_position()
-		draw_arc(mouse_pos, max_mouse_radius_in_pixels, 0, TAU, 64, Color.GREEN, 0.1, true)
 
 func _find_nearest_allowed_jack_to_mouse(clear: bool = true):
 	var jacksInViewingRack = racks[viewing_rack].jacks
@@ -136,10 +159,11 @@ func _find_nearest_allowed_jack_to_mouse(clear: bool = true):
 
 		var is_closest = distance_to_mouse < closest_distance_to_mouse
 		var valid_in_out = \
-		(active_cable == null) || \
+		((active_cable == null) || \
 		(!active_cable.a && !active_cable.b) || \
 		(active_cable.a && active_cable.a.is_input != jack.is_input) || \
-		(active_cable.b && active_cable.b.is_input != jack.is_input)
+		(active_cable.b && active_cable.b.is_input != jack.is_input)) && \
+		!jack.connected_to
 
 		if is_closest && valid_in_out:
 			closest_distance_to_mouse = distance_to_mouse
@@ -155,15 +179,18 @@ func _focus_nearest_allowed_jack_to_mouse():
 	if nearest:
 		nearest.scene.set_focused(true)
 		focused_jack = nearest
+		if active_cable:
+			active_cable.scene.hover_at_position(active_cable.holding_a, focused_jack.scene.global_position)
+	else:
+		if active_cable:
+			active_cable.scene.hold_end(active_cable.holding_a)
 	
 #endregion
 
 #region handle jack selection
 func _select_focused_jack():
-	# print({focused_jack: focused_jack, active_cable: active_cable})
 	if !focused_jack: return
 	if !active_cable: return
-	print(focused_jack.scene)
 	var holding_a = active_cable.holding_a
 
 	# TODO make sure focused jack isn't already connected somehow
@@ -178,22 +205,7 @@ func _select_focused_jack():
 	# Update jack and jacks array
 	focused_jack.is_connected = true
 	if active_cable.a && active_cable.b:
-		print("oop")
-		# set each jacks connected_to value to the other jack
-		var jack_on_other_end_of_cable = active_cable.b if holding_a else active_cable.a
-		focused_jack.connected_to = jack_on_other_end_of_cable
-		jack_on_other_end_of_cable.connected_to = focused_jack
-
-		# update values in arrays
-		var indexes_of_connections = _get_indexes_of_jacks(focused_jack.scene, jack_on_other_end_of_cable.scene)
-		var focused_index = indexes_of_connections[0]
-		var connected_index = indexes_of_connections[1]
-		
-		racks[viewing_rack][focused_index] = focused_jack
-		racks[viewing_rack][connected_index] = connected_index
-		
-		# if debug:
-			# print('connected ', focused_jack.scene, ' to ', jack_on_other_end_of_cable.scene, ' : ', racks)
+		_create_connection_and_make_cable_inactive(holding_a)
 
 	# make cable inactive if other end is already connected
 	# otherwise hold other end
@@ -201,7 +213,7 @@ func _select_focused_jack():
 		active_cable = null
 	else:
 		active_cable.holding_a = !holding_a
-		active_cable.scene.make_end_active(!holding_a)
+		# active_cable.scene.make_end_active(!holding_a)
 			
 
 func _get_indexes_of_jacks(scene1, scene2) -> Array:
@@ -213,3 +225,20 @@ func _get_indexes_of_jacks(scene1, scene2) -> Array:
 		if racks[viewing_rack].jacks[i].scene.get_scene_file_path() == scene2.get_scene_file_path():
 			index_b = i
 	return [index_a, index_b]
+
+func _create_connection_and_make_cable_inactive(holding_a):
+	# set each jacks connected_to value to the other jack
+	var jack_on_other_end_of_cable = active_cable.b if holding_a else active_cable.a
+	focused_jack.connected_to = jack_on_other_end_of_cable
+	jack_on_other_end_of_cable.connected_to = focused_jack
+
+	# update values in arrays
+	var indexes_of_connections = _get_indexes_of_jacks(focused_jack.scene, jack_on_other_end_of_cable.scene)
+	var focused_index = indexes_of_connections[0]
+	var connected_index = indexes_of_connections[1]
+	
+	racks[viewing_rack][focused_index] = focused_jack
+	racks[viewing_rack][connected_index] = connected_index
+	
+	if debug:
+		print('connected ', focused_jack.scene, ' to ', jack_on_other_end_of_cable.scene)
