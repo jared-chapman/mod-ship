@@ -1,19 +1,21 @@
 extends Node2D
 
+# state
 enum State {
 	PLACING_INITIAL,
 	PLACING_SECONDARY,
 	PLACED
 }
-
 var _state: State
 
 # physical cable attributes
-var NUMBER_OF_SEGMENTS: int = 5
-var INITIAL_LENGTH_IN_PIXELS: int = 20
-var TOTAL_MASS: float = 2.0
-var STRETCH_SOFTNESS: float = 15.0
-var col := Color(1, 1, 1, 1)
+@export var NUMBER_OF_SEGMENTS: int = 5
+@export var INITIAL_LENGTH_IN_PIXELS: int = 45
+@export var TOTAL_MASS: float = 2.0
+@export var INITIAL_SOFTNESS: float = 4.0
+@export var STRETCH_SOFTNESS: float = 10.0
+@export var col := Color(1, 1, 1, 1)
+
 
 
 var segments = []
@@ -28,14 +30,10 @@ var joints = []
 		'follow_accelleration': 6.0,
 		'snap_accelleration': 300.0,
 		'max_speed': 400.0,
-		'end_a': end_a,
-		'end_b': end_b,
-		'other_end': '',
 	}
 
 
 func _ready() -> void:
-	print('creating cable of length', INITIAL_LENGTH_IN_PIXELS)
 	_build_cable()
 	_state = State.PLACING_INITIAL
 

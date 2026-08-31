@@ -11,13 +11,20 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="uid://bnq1iyiq321g8"
+run/main_scene="uid://lfenjwd27ney"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+CableManager="*res://scenes/autoloads/CableManager/cable_manager.gd"
+ModuleManager="*res://scenes/autoloads/ModuleManager/ModuleManager.gd"
+
 [display]
 
+window/size/mode=3
 window/size/initial_screen=2
+window/stretch/mode="viewport"
 
 [global_group]
 

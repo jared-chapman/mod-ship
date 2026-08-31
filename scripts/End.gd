@@ -42,6 +42,7 @@ func set_state_initiate_hard_lock(pos):
 	target = pos
 #endregion
 
+
 #region public getters
 func is_following_mouse():
 	return _state == State.FOLLOW_MOUSE
@@ -55,6 +56,7 @@ func is_locked():
 func get_target():
 	return target
 #endregion
+
 
 #region private setters
 func _set_plugged(plugged: bool) -> void:
