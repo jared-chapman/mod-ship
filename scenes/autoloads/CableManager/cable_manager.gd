@@ -1,17 +1,16 @@
 extends Node2D
 @export var debug = true
 
-@onready var active_cable
-@onready var active_cables = []
-@onready var modules = []
-@onready var connections = []
-@onready var racks = {}
-@onready var viewing_rack
-@onready var max_mouse_radius_in_pixels = 25
-@onready var selection_method = "mouse"
-@onready var focused_jack = null
+var active_cable
+var active_cables = []
+var connections = []
+var racks = {}
+var viewing_rack
+var max_mouse_radius_in_pixels = 25
+var selection_method = "mouse"
+var focused_jack = null
 
-@onready var cable_scene := preload("res://scenes/DynamicCable/DynamicCable.tscn")
+var cable_scene := preload("res://scenes/DynamicCable/DynamicCable.tscn")
 
 const used_events = [
 	'Primary',
@@ -28,52 +27,62 @@ const used_events = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# FOR TESTING
-	racks.test = {
-		'jacks': [
-			{
-				"scene": %TestJack1,
-				"is_input": false,
-				"connected_to": null,
-			},
-			{
-				"scene": %TestJack2,
-				"is_input": true,
-				"connected_to": null,
-			},
-			{
-				"scene": %TestJack3,
-				"is_input": false,
-				"connected_to": null,
-			},
-			{
-				"scene": %TestJack4,
-				"is_input": true,
-				"connected_to": null,
-			},
-			{
-				"scene": %TestJack5,
-				"is_input": false,
-				"connected_to": null,
-			},
-			{
-				"scene": %TestJack6,
-				"is_input": true,
-				"connected_to": null,
-			},
-			{
-				"scene": %TestJack7,
-				"is_input": false,
-				"connected_to": null,
-			},
-			{
-				"scene": %TestJack8,
-				"is_input": true,
-				"connected_to": null,
-			},
-		]
-	}
-	viewing_rack = 'test'
+	pass
+
+
+func add_rack(rack) -> void:
+	#var rackNames = racks.map(func (r): return r.name)
+	print('hit', rack)
+	racks[rack.rack_name] = rack
+	if viewing_rack == null:
+		viewing_rack = rack
+	# if racks["test"]: return
+	# print('here')
+	# racks.test = {
+	# 	'jacks': [
+	# 		{
+	# 			"scene": %TestJack1,
+	# 			"is_input": false,
+	# 			"connected_to": null,
+	# 		},
+	# 		{
+	# 			"scene": %TestJack2,
+	# 			"is_input": true,
+	# 			"connected_to": null,
+	# 		},
+	# 		{
+	# 			"scene": %TestJack3,
+	# 			"is_input": false,
+	# 			"connected_to": null,
+	# 		},
+	# 		{
+	# 			"scene": %TestJack4,
+	# 			"is_input": true,
+	# 			"connected_to": null,
+	# 		},
+	# 		{
+	# 			"scene": %TestJack5,
+	# 			"is_input": false,
+	# 			"connected_to": null,
+	# 		},
+	# 		{
+	# 			"scene": %TestJack6,
+	# 			"is_input": true,
+	# 			"connected_to": null,
+	# 		},
+	# 		{
+	# 			"scene": %TestJack7,
+	# 			"is_input": false,
+	# 			"connected_to": null,
+	# 		},
+	# 		{
+	# 			"scene": %TestJack8,
+	# 			"is_input": true,
+	# 			"connected_to": null,
+	# 		},
+	# 	]
+	# }
+	# viewing_rack = 'test'
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -106,16 +115,13 @@ func _unhandled_input(event) -> void:
 	# if debug: _log_keypress(event)
 	if event.is_action_pressed('Primary'): _handle_primary()
 	if event.is_action_pressed('Secondary'): _handle_secondary()
-	if event.is_action_pressed('Up'): _handle_direction('Up')
+	# if event.is_action_pressed('Up'): _handle_direction('Up')
 	if event.is_action_pressed('Down'): _handle_direction('Down')
 	if event.is_action_pressed('Left'): _handle_direction('Left')
 	if event.is_action_pressed('Right'): _handle_direction('Right')
 	if event.is_action_pressed('Scroll_Up'): _handle_scroll('Up')
 	if event.is_action_pressed('Scroll_Down'): _handle_scroll('Down')
 	if event.is_action_pressed('Test_Cable'): _create_cable()
-
-
-
 
 func _handle_primary() -> void:
 	_select_focused_jack()
@@ -133,7 +139,7 @@ func _create_cable() -> void:
 	var cable = cable_scene.instantiate()
 	add_child(cable)
 	active_cable = {
-		"scene": cable,
+		"instance": cable,
 		"a": null,
 		"b": null,
 		"holding_a": true,
@@ -147,15 +153,25 @@ func _create_cable() -> void:
 #region handle jack focus
 
 func _find_nearest_allowed_jack_to_mouse(clear: bool = true):
-	var jacksInViewingRack = racks[viewing_rack].jacks
+	# print(racks)
+	
+	#c#viewing_rack == null: return
+
+	#var jacksInViewingRack = viewing_rack.jacks
+	var jacksInViewingRack = RackManager.get_current_rack_jacks()
 	var closest_distance_to_mouse = max_mouse_radius_in_pixels
 	var nearest_jack_to_mouse = null
-
+	if len(jacksInViewingRack) == 0: return
+	#print('test - ', jacksInViewingRack[0].scene)
 	for jack in jacksInViewingRack:
+		print('jack', jack)
+		print('1')
+		if not is_instance_valid(jack.instance): return
+		print('2')
 		if clear:
-			jack.scene.set_focused(false)
+			jack.instance.set_focused(false)
 			focused_jack = null
-		var distance_to_mouse: float = jack.scene.global_position.distance_to(get_global_mouse_position())
+		var distance_to_mouse: float = jack.instance.global_position.distance_to(get_global_mouse_position())
 
 		var is_closest = distance_to_mouse < closest_distance_to_mouse
 		var valid_in_out = \
@@ -170,20 +186,22 @@ func _find_nearest_allowed_jack_to_mouse(clear: bool = true):
 			nearest_jack_to_mouse = jack
 
 	if nearest_jack_to_mouse != null:
+		print('nearest', nearest_jack_to_mouse)
 		return nearest_jack_to_mouse
 
 	return null
 
 func _focus_nearest_allowed_jack_to_mouse():
 	var nearest = _find_nearest_allowed_jack_to_mouse()
+	print('nearest', nearest)
 	if nearest:
-		nearest.scene.set_focused(true)
+		nearest.instance.set_focused(true)
 		focused_jack = nearest
 		if active_cable:
-			active_cable.scene.hover_at_position(active_cable.holding_a, focused_jack.scene.global_position)
+			active_cable.instance.hover_at_position(active_cable.holding_a, focused_jack.instance.global_position)
 	else:
 		if active_cable:
-			active_cable.scene.hold_end(active_cable.holding_a)
+			active_cable.instance.hold_end(active_cable.holding_a)
 	
 #endregion
 
@@ -196,7 +214,7 @@ func _select_focused_jack():
 	# TODO make sure focused jack isn't already connected somehow
 	
 	# Connect holding_end to jack
-	active_cable.scene.place(holding_a, focused_jack.scene.global_position)
+	active_cable.instance.place(holding_a, focused_jack.instance.global_position)
 	if holding_a:
 		active_cable.a = focused_jack
 	else:
@@ -213,7 +231,7 @@ func _select_focused_jack():
 		active_cable = null
 	else:
 		active_cable.holding_a = !holding_a
-		# active_cable.scene.make_end_active(!holding_a)
+		# active_cable.instancew.make_end_active(!holding_a)
 			
 
 func _get_indexes_of_jacks(scene1, scene2) -> Array:
@@ -232,6 +250,7 @@ func _create_connection_and_make_cable_inactive(holding_a):
 	focused_jack.connected_to = jack_on_other_end_of_cable
 	jack_on_other_end_of_cable.connected_to = focused_jack
 
+	# REMOVE!!! Connections should be handled in rack manager
 	# update values in arrays
 	var indexes_of_connections = _get_indexes_of_jacks(focused_jack.scene, jack_on_other_end_of_cable.scene)
 	var focused_index = indexes_of_connections[0]

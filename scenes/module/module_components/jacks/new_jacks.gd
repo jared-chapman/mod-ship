@@ -3,6 +3,8 @@ class_name NewJack
 
 @export var is_input: bool
 
+var connected := false
+
 var value: Dictionary = {
 	"volt" = 0,
 	"amp" = 0
@@ -18,18 +20,26 @@ func _process(delta):
 	pass
 
 func set_value(val, first: bool = false) -> void:
-	if (val.volt == value.volt) \
-	and (val.amp == value.amp) \
-	and (not first):
-		return
-
-	value = val
-	emit_signal("value_changed", self, value)
+	pass
+	#print('value set', val)
+	#if (val.volt == value.volt) \
+	#and (val.amp == value.amp) \
+	#and (not first):
+		#return
+#
+	#value = val
+	#emit_signal("value_changed", self, value)
+	
+func set_volt(val):
+	value = {
+		'volt': val,
+		'amp': value.amp
+	}
 
 func set_focused(f):
 	focused = f
 	if f:
-		$Sprite2D2.modulate = Color.YELLOW
+		$Sprite2D.modulate = Color.YELLOW
 	else:
-		$Sprite2D2.modulate = Color.WHITE
+		$Sprite2D.modulate = Color.WHITE
 		

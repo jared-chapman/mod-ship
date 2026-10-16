@@ -16,17 +16,17 @@ var out_3
 func _ready() -> void:
 	print("Atten-2 ready")
 	setup()
-	in_1   = inputs[3]
-	jack_1 = inputs[0]
-	out_1  = outputs[0]
+	in_1   = inputJacks[0]
+	jack_1 = inputKnobs[0]
+	out_1  = outputJacks[0]
 	
-	in_2   = inputs[4]
-	jack_2 = inputs[1]
-	out_2  = outputs[1]
+	in_2   = inputJacks[1]
+	jack_2 = inputKnobs[1]
+	out_2  = outputJacks[1]
 	
-	in_3   = inputs[5]
-	jack_3 = inputs[2]
-	out_3  = outputs[2]
+	in_3   = inputJacks[2]
+	jack_3 = inputKnobs[2]
+	out_3  = outputJacks[2]
 
 	width_hp = 4
 
@@ -34,13 +34,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# normal the inputs
+	print('in_2', in_2)
 	if not in_2.connected:
 		in_2.set_value(out_1.value)
 		
 	if not in_3.connected:
 		in_3.set_value(out_2.value)
 	
-	out_1.set_value(in_1.value * jack_1.value)
-	out_2.set_value(in_2.value * jack_2.value)
-	out_3.set_value(in_3.value * jack_3.value)
+	out_1.set_volt(in_1.value.volt * jack_1.value)
+	out_2.set_volt(in_2.value.volt * jack_2.value)
+	out_3.set_volt(in_3.value.volt * jack_3.value)
 	

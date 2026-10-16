@@ -16,41 +16,45 @@ centered = false
 region_enabled = true
 region_rect = Rect2(47.96437, -0.02407217, 32.025314, 64.034325)
 
-[node name="Inputs" type="Node2D" parent="."]
+[node name="InputJacks" type="Node2D" parent="."]
 z_index = 1
 
-[node name="Knob" parent="Inputs" instance=ExtResource("3_l8luo")]
-position = Vector2(15.355, 22.4)
-_name = "attenuator-1"
-
-[node name="Knob2" parent="Inputs" instance=ExtResource("3_l8luo")]
-position = Vector2(15.325, 37.375)
-_name = "attenuator-2"
-
-[node name="Knob3" parent="Inputs" instance=ExtResource("3_l8luo")]
-position = Vector2(15.325, 52.315)
-_name = "attenuator-3"
-
-[node name="JackSmall" parent="Inputs" instance=ExtResource("4_28apd")]
+[node name="JackSmall" parent="InputJacks" instance=ExtResource("4_28apd")]
 position = Vector2(8, 16)
 is_input = true
 
-[node name="JackSmall2" parent="Inputs" instance=ExtResource("4_28apd")]
+[node name="JackSmall2" parent="InputJacks" instance=ExtResource("4_28apd")]
 position = Vector2(8, 31)
 is_input = true
 
-[node name="JackSmall3" parent="Inputs" instance=ExtResource("4_28apd")]
+[node name="JackSmall3" parent="InputJacks" instance=ExtResource("4_28apd")]
 position = Vector2(8, 46)
 is_input = true
 
-[node name="Outputs" type="Node2D" parent="."]
+[node name="OutputJacks" type="Node2D" parent="."]
 z_index = 1
 
-[node name="JackSmall" parent="Outputs" instance=ExtResource("4_28apd")]
+[node name="JackSmall" parent="OutputJacks" instance=ExtResource("4_28apd")]
 position = Vector2(23, 16)
 
-[node name="JackSmall2" parent="Outputs" instance=ExtResource("4_28apd")]
+[node name="JackSmall2" parent="OutputJacks" instance=ExtResource("4_28apd")]
 position = Vector2(23, 31)
 
-[node name="JackSmall3" parent="Outputs" instance=ExtResource("4_28apd")]
+[node name="JackSmall3" parent="OutputJacks" instance=ExtResource("4_28apd")]
 position = Vector2(23, 46)
+
+[node name="InputKnobs" type="Node2D" parent="."]
+
+[node name="Knob" parent="InputKnobs" instance=ExtResource("3_l8luo")]
+position = Vector2(15.355, 22.4)
+_name = "attenuator-1"
+
+[node name="Knob2" parent="InputKnobs" instance=ExtResource("3_l8luo")]
+position = Vector2(15.325, 37.375)
+_name = "attenuator-2"
+
+[node name="Knob3" parent="InputKnobs" instance=ExtResource("3_l8luo")]
+position = Vector2(15.325, 52.315)
+_name = "attenuator-3"
+
+[node name="InputSwitches" type="Node2D" parent="."]

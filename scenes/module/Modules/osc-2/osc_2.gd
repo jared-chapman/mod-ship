@@ -15,10 +15,10 @@ var _phase: float
 func _ready() -> void:
 	print("hi")
 	setup()
-	speed = inputs[0]
-	mode_select = inputs[1]
-	sin_out = outputs[1]
-	sqr_out = outputs[0]
+	speed = inputKnobs[0]
+	mode_select = inputSwitches[0]
+	sin_out = outputJacks[1]
+	sqr_out = outputJacks[0]
 
 	width_hp = 4
 
