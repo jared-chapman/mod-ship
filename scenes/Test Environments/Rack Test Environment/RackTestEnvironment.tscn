@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqfafpfdxqirp"]
+
+[ext_resource type="Script" uid="uid://520f683cqcpc" path="res://scenes/Test Environments/Rack Test Environment/rack_test_environment.gd" id="1_ntafm"]
+[ext_resource type="PackedScene" uid="uid://lfenjwd27ney" path="res://scenes/RackView/Rack/Rack.tscn" id="1_togte"]
+
+[node name="RackTestEnvironment" type="Node2D"]
+script = ExtResource("1_ntafm")
+
+[node name="RackSidebar" parent="." instance=ExtResource("1_togte")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(81, 34)
+zoom = Vector2(15.95, 15.95)
+limit_enabled = false

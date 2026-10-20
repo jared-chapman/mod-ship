@@ -10,16 +10,17 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="New Game Project (4.5)"
 run/main_scene="uid://bnq1iyiq321g8"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
-CableManager="*res://scenes/autoloads/CableManager/cable_manager.gd"
-ModuleManager="*res://scenes/autoloads/ModuleManager/ModuleManager.gd"
-RackManager="*res://scenes/autoloads/RackManager/rack_manager.gd"
+CableManager="*res://scenes/autoloads/cable_manager.gd"
+ModuleManager="*res://scenes/autoloads/module_manager.gd"
+RackManager="*res://scenes/autoloads/rack_manager.gd"
+Globals="*res://scenes/autoloads/globals.gd"
 
 [display]
 
